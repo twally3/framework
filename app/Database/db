@@ -1,0 +1,41 @@
+<?php
+
+require '../config/config.php';
+require './Database.php';
+Database::construct();
+
+require './core/migrations.php';
+require './core/schema.php';
+require './core/table.php';
+
+Switch ($argv[1]) {
+  case 'migrate':
+    $method = 'migrate';
+    break;
+  case 'migrate:rollback':
+    $method = 'rollback';
+    break;
+  case 'migrate:make':
+    $method = 'make';
+    break;
+  case 'migrate:install':
+    $method = 'install';
+    break;
+  case 'seed':
+    $method = 'seed';
+    break;
+  case 'seed:upload':
+    $method = 'upload';
+    break;
+  case 'migrate:init':
+    $method = 'init';
+    break;
+  default:
+    echo 'command not recognised';
+}
+
+if (isset($method)) {
+  Migrations::$method($argv[2]);
+}
+
+echo "\n";

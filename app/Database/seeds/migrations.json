@@ -1,0 +1,1 @@
+[{"migration":"1477425763_create_artist_table","batch":"1"},{"migration":"1477426141_create_album_table","batch":"2"},{"migration":"1477426357_create_listener_table","batch":"3"},{"migration":"1477426699_create_album_listener_table","batch":"4"}]
