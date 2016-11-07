@@ -34,6 +34,20 @@ class Route {
     }
   }
 
+  public static function put($uri, $method = null) {
+    if ($method != null) {
+      self::$_uri[] = self::buildURI($uri, $method, 'put');
+      return new static;
+    }
+  }
+
+  public static function delete($uri, $method = null) {
+    if ($method != null) {
+      self::$_uri[] = self::buildURI($uri, $method, 'delete');
+      return new static;
+    }
+  }
+
   public static function buildURI($uri, $method, $rtype) {
     $uri = is_null(self::$_prefix) ? $uri : self::$_prefix . $uri;
 
@@ -61,7 +75,7 @@ class Route {
     self::$_middleware = null;
   }
 
-  public static function findMatch() {
+  public static function findMatch_back() {
     $uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
     $rtype = strtolower($_SERVER['REQUEST_METHOD']);
 
@@ -73,6 +87,23 @@ class Route {
         }
       }
       $rtype = 'get';
+    }
+    return null;
+  }
+
+  public static function findMatch() {
+    $uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
+    $rtype = strtolower($_SERVER['REQUEST_METHOD']);
+
+    if ($rtype == 'post') {
+      $rtype = isset($_POST['_method']) ? $_POST['_method'] : 'post';
+    }
+
+    foreach (self::$_uri as $key => $value) {
+      if (preg_match($value['uri'], $uriGetParam, self::$_params) && $value['rtype'] == $rtype) {
+        array_splice(self::$_params, 0, 1);
+        return $value;
+      }
     }
     return null;
   }
@@ -108,8 +139,6 @@ class Route {
 
       if(file_exists('../app/Controllers/' . $callback[0] . '.php')) {
         self::$_controller = $callback[0];
-      } else if (!file_exists('../app/Controllers/' . DEFAULT_CONTROLLER . '.php')) {
-        self::noRoutes();
       }
 
       require_once "../app/Controllers/" . self::$_controller . ".php";
@@ -121,10 +150,6 @@ class Route {
         }
       }
 
-      if (!method_exists(self::$_controller, self::$_method)) {
-        self::noRoutes();
-      }
-
       call_user_func_array([self::$_controller, self::$_method], self::$_params);
     } else if (is_callable($callback)) {
       self::$_method = $callback;
@@ -133,7 +158,7 @@ class Route {
   }
 
   static function noRoutes() {
-    require_once './core_files/noRoutes.php';
+    include '../app/handlers/view/noRoutes.php';
     die;
   }
 

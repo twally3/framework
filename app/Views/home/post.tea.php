@@ -6,6 +6,7 @@
   </head>
   <body>
     <h1>{$post['text']}</h1>
+    
     <pre>
       <? print_r($post); ?>
     </pre>

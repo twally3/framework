@@ -5,6 +5,8 @@ Route::get('/', 'home@index');
 Route::get('/home/{name}', 'home@hello');
 Route::get('/sessions', 'home@sessions');
 
+Route::get('/test/index', 'test@index');
+
 Route::get('/csrf', 'home@csrf');
 
 Route::get('/function/{name}?/{age}', function($name, $age = null) {
@@ -13,6 +15,8 @@ Route::get('/function/{name}?/{age}', function($name, $age = null) {
 
 Route::get('/requests', 'home@get');
 Route::post('/requests', 'home@post')->name('geoff');
+Route::put('/requests', 'home@post');
+Route::delete('/requests', 'home@post');
 
 Route::get('/page1/{name}?', 'home@page1');
 Route::get('/page2', 'home@page2');

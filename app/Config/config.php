@@ -2,7 +2,7 @@
 
 define("DEBUGGING", TRUE);
 
-define("DEFAULT_CONTROLLER", 'home');
+define("DEFAULT_CONTROLLER", 'test');
 define("DEFAULT_INDEX", 'index');
 
 define('DB_TYPE', 'mysql');
