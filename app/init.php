@@ -1,6 +1,6 @@
 <?php
 
-require_once 'core/Database.php';
+require_once 'Database/core/Database.php';
 Database::construct();
 
 require_once 'core/ORM.php';
