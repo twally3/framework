@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require_once 'Config/config.php';
+require_once '../app/config/config.php';
 require_once '../app/core/helpers.php';
 
 set_error_handler("customErrorCatch");
