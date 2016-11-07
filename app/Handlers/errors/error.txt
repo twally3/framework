@@ -535,3 +535,6 @@
 1478471801 | Error: 2 explode() expects at least 2 parameters, 1 given in file /Users/Max/OneDrive/LAMP/www/framework/public/index.php on line 20 
 1478471801 | Error: 2 explode() expects at least 2 parameters, 1 given in file /Users/Max/OneDrive/LAMP/www/framework/public/index.php on line 20 
 1478471801 | Error: 2 explode() expects at least 2 parameters, 1 given in file /Users/Max/OneDrive/LAMP/www/framework/public/index.php on line 20 
+1478529264 | Error: 8 Undefined variable: /requests in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalrV5EpA on line 10 
+1478530499 | Error: 8 Undefined variable: p in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEval8pn0QP on line 17 
+1478530689 | Error: 8 Use of undefined constant csrf_token - assumed 'csrf_token' in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalzSjok4 on line 14 

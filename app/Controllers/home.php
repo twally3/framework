@@ -88,7 +88,7 @@ class Home extends Controller {
   }
 
   public function get() {
-    $this->view('home/get', ['post' => $_POST, 'route' => Route::path('geoff')]);
+    $this->view('home/get', ['post' => $_POST, 'p' => '<h3>HEY</h3>', 'route' => Route::path('geoff')]);
   }
 
   public function post() {

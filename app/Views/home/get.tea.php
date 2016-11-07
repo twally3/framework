@@ -7,15 +7,21 @@
   </head>
   <body>
     <h1>Test Form</h1>
-    <form action="{$route}" method="post">
+    <form action="{!Route::path('geoff')}" method="post">
       <input type="text" name="text">
       <input type="submit" name="submit" value="Lets go">
-      {csrfToken()}
+      {!csrf_token()}
     </form>
-    {Route::path('geoff')}
     <pre>
       <? print_r($_GET); ?>
       <? print_r($_SERVER) ?>
     </pre>
+
+    {$p}
+    {!$p}
+    {!Route::path('geoff')}
+    {Route::path('geoff')}
+    {time()}
+    {!time()}
   </body>
 </html>

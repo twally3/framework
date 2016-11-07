@@ -3,15 +3,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-function debugArray($array = []) {
-  echo '<pre>';
-  print_r($array);
-  echo '</pre>';
-}
-
-function customErrorCatch($num, $msg, $file, $line) {
-  throw new Exception('Error: '. $num . ' ' . $msg. ' in file '. $file. ' on line '. $line);
-}
+include '../app/core/functions.php';
 
 set_error_handler("customErrorCatch");
 

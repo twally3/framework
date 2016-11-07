@@ -7,8 +7,6 @@ class Tea {
   public function view($view, $data = []) {
     $string = file_get_contents('../app/views/' . $view . $this->extension);
 
-    // $vars = $this->addExternalVars($string, $data);
-
     foreach ($data as $x => $y) {
       if (isset($$x)) {
         throw new Exception("Variable naming conflict passed to view. '{$x}' is not an allowed variable name!");
@@ -17,15 +15,14 @@ class Tea {
       $$x = $y;
     }
 
-
     $string = $this->findExtend($string);
     $string = $this->findInclude($string);
     $string = $this->conditionals($string);
     $string = $this->loops($string);
     $string = $this->addVars($string);
 
-    // $string = $vars . $string;
-    // echo htmlspecialchars($string);
+    // echo '<pre>';
+    // echo htmlentities($string);
     // die;
 
     $tmpfname = tempnam("..app/views/tmp", "fakeEval");
@@ -34,26 +31,6 @@ class Tea {
     fclose($handle);
     include $tmpfname;
     unlink($tmpfname);
-  }
-
-  protected function addExternalVars($string, $data) {
-    $vars = '<? ';
-    foreach ($data as $x => $y) {
-      // $str = var_export($y, true);
-      // $vars .= '$' . $x . '=' . $str . "; ";
-      global $$x;
-      $$x = $y;
-    }
-    $vars .= '?>';
-
-    // echo htmlspecialchars($vars);
-    // die;
-    // return $vars;
-
-
-    // echo $vars;
-
-    // return $string;
   }
 
   protected function loops($string) {
@@ -120,17 +97,17 @@ class Tea {
   }
 
   protected function addVars($string, $data = []) {
-    //PHP literal '#\{\{(.*?)\}\}#' -> '<?$1(QUESTION MARK)>'
-
     $find = [
       '#\{\$(.*?)\}#',
-      '#\{time\(\)\}#',
-      '#\{csrfToken\(\)\}#'
+      '#\{\!\$(.*?)\}#',
+      '#\{([^!].*?)\((.*?)\)\}#',
+      '#\{\!(.*?)\((.*?)\)\}#'
     ];
     $replace = [
       '<?=htmlentities($$1);?>',
-      '<?=time();?>',
-      '<input name="_token" type="hidden" value="' . '<?=$_SESSION["csrf_token"]' .  '?>">'
+      '<?=$$1;?>',
+      '<?=htmlentities($1($2));?>',
+      '<?=$1($2);?>'
     ];
 
     $string = preg_replace($find, $replace, $string);
