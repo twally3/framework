@@ -1,6 +1,5 @@
 <?php
 
-require_once 'Config/config.php';
 require_once 'core/Database.php';
 Database::construct();
 
