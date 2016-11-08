@@ -13,8 +13,24 @@ Route::get('/function/{name}?/{age}', function($name, $age = null) {
   echo "name: $name, age: $age";
 });
 
-Route::get('/requests', 'home@get');
-Route::post('/requests', 'home@post')->name('geoff');
+Route::get('/testing/requests', 'home@get');
+Route::post('/requests', function(Request $request) {
+	echo $request->path();
+	debugArray($request->all());
+	echo $request->is('/testing/*');
+	echo $request->text;
+	echo $request->input('tedxt', 'default');
+
+	echo $request->isMethod('post');
+
+	debugArray($request->only('text', '_token'));
+
+	debugArray($request->exclude('text', 'submit'));
+
+	echo $request->has('_token');
+})->name('geoff');
+
+
 Route::put('/requests', 'home@post');
 Route::delete('/requests', 'home@post');
 

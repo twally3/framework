@@ -33,20 +33,19 @@ class Home extends Controller {
 
   public function ORM() {
 
-    $query = Database::query("SELECT * FROM Artists AS ar JOIN Albums as al ON al.artist_id = ar.id");
-    $data = $query->fetchAll(PDO::FETCH_OBJ);
+    $artists = Artist::all();
 
-    debugArray($data);
+    // debugArray($data);
 
     // $artists = Artist::all();
 
-    // $this->view('home/orm', ['artists' => $artists]);
+    $this->view('home/orm', ['artists' => $artists]);
     // $this->rawView('home/orm.tea');
 
   }
 
   public function index() {
-    include 'core_files/noRoutes.php';
+    include '../app/handlers/view/noRoutes.php';
   }
 
   public function hello($name='') {
@@ -58,16 +57,6 @@ class Home extends Controller {
     $encode = base64_encode($num);
     echo $encode;
   }
-
-  public function sessions() {
-
-    session::display();
-    echo session::get('csrf_token');
-    session::unset('csrf_token');
-    session::display();
-    session::end();
-  }
-
 
   public function page1($name = '') {
     $arr = [1,2,3,4,5,6];

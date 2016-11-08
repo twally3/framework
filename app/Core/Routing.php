@@ -6,9 +6,10 @@ class Route {
   protected static $_middleware = null;
 
   protected static $_uri = [];
+  protected static $_requestTypes = ['put', 'post', 'delete'];
 
-  protected static $_controller = DEFAULT_CONTROLLER;
-  protected static $_method = DEFAULT_INDEX;
+  protected static $_controller;
+  protected static $_method;
   protected static $_params = [];
 
   public static function name($name) {
@@ -75,22 +76,6 @@ class Route {
     self::$_middleware = null;
   }
 
-  public static function findMatch_back() {
-    $uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
-    $rtype = strtolower($_SERVER['REQUEST_METHOD']);
-
-    for ($i = 0; $i < 2; $i++) {
-      foreach (self::$_uri as $key => $value) {
-        if (preg_match($value['uri'], $uriGetParam, self::$_params) && $value['rtype'] == $rtype) {
-          array_splice(self::$_params, 0, 1);
-          return $value;
-        }
-      }
-      $rtype = 'get';
-    }
-    return null;
-  }
-
   public static function findMatch() {
     $uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
     $rtype = strtolower($_SERVER['REQUEST_METHOD']);
@@ -99,9 +84,16 @@ class Route {
       $rtype = isset($_POST['_method']) ? $_POST['_method'] : 'post';
     }
 
+    $key = array_search("uri", array_keys($_GET));
+    array_splice($_GET, $key, 1);
+
     foreach (self::$_uri as $key => $value) {
       if (preg_match($value['uri'], $uriGetParam, self::$_params) && $value['rtype'] == $rtype) {
         array_splice(self::$_params, 0, 1);
+        if (!empty($_GET) || !empty($_POST)) {
+          array_unshift(self::$_params, new Request);
+        }
+
         return $value;
       }
     }
@@ -132,28 +124,32 @@ class Route {
       self::middleware($request);
     }
 
-    $callback = is_null($request) ? '' : $request['method'];
+    $callback = is_null($request) ? null : $request['method'];
 
     if (is_string($callback)) {
       $callback = explode('@', $callback);
 
       if(file_exists('../app/Controllers/' . $callback[0] . '.php')) {
         self::$_controller = $callback[0];
+      } else {
+        throw new Exception('Page does not exist');
       }
 
       require_once "../app/Controllers/" . self::$_controller . ".php";
       self::$_controller = new self::$_controller;
 
-      if(isset($callback[1])) {
-        if(method_exists(self::$_controller, $callback[1])) {
-          self::$_method = $callback[1];
-        }
+      if(isset($callback[1]) && method_exists(self::$_controller, $callback[1])) {
+        self::$_method = $callback[1];
+      } else {
+        throw new Exception('Page does not exist');
       }
 
       call_user_func_array([self::$_controller, self::$_method], self::$_params);
     } else if (is_callable($callback)) {
       self::$_method = $callback;
       call_user_func_array(self::$_method, self::$_params);
+    } else {
+      throw new Exception('Page does not exist');
     }
   }
 

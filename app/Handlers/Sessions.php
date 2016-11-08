@@ -37,6 +37,8 @@ class Session {
   public static function get($key) {
     if (self::isset($key)) {
       return $_SESSION[$key];
+    } else {
+      return null;
     }
   }
 

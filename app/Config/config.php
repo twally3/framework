@@ -2,9 +2,6 @@
 
 define("DEBUGGING", TRUE);
 
-define("DEFAULT_CONTROLLER", 'test');
-define("DEFAULT_INDEX", 'index');
-
 define('DB_TYPE', 'mysql');
 define('DB_NAME','models');
 define('DB_USER', 'root');
