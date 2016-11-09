@@ -20980,3 +20980,28 @@
 1478650436 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvaldhjl65 on line 10 
 1478650437 | Page does not exist 
 1478650437 | Page does not exist 
+1478700596 | Page does not exist 
+1478700602 | Page does not exist 
+1478700604 | Page does not exist 
+1478700608 | Page does not exist 
+1478700641 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalCjMl7l on line 9 
+1478700759 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalUcb7yW on line 10 
+1478700880 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalGB8C17 on line 10 
+1478700919 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEval1tjSt2 on line 10 
+1478701297 | Page does not exist 
+1478701440 | Page does not exist 
+1478701461 | Error: 4096 Object of class Request could not be converted to string in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 5 
+1478701469 | Error: 4096 Object of class Request could not be converted to string in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 5 
+1478701471 | Error: 4096 Object of class Request could not be converted to string in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 5 
+1478701495 | Error: 4096 Object of class Request could not be converted to string in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 5 
+1478702626 | Page does not exist 
+1478702626 | Page does not exist 
+1478702669 | Error: 2 Missing argument 1 for fileController::index(), called in /Users/Max/OneDrive/LAMP/www/framework/app/core/Routing.php on line 147 and defined in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 4 
+1478702679 | Error: 8 Undefined variable: file in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 5 
+1478702699 | Error: 2 exif_read_data(): Filename cannot be empty in file /Users/Max/OneDrive/LAMP/www/framework/app/core/file.php on line 22 
+1478702756 | Error: 2 exif_read_data(): Filename cannot be empty in file /Users/Max/OneDrive/LAMP/www/framework/app/core/file.php on line 22 
+1478703089 | No files given! 
+1478703094 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalDlxHfb on line 10 
+1478703100 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalFTCvLp on line 10 
+1478703260 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalrggahp on line 9 
+1478703271 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalb6FBqC on line 9 
