@@ -47,6 +47,12 @@ Route::get('/posts', 'home@posts');
 
 Route::get('/profiles/{username}', 'home@profiles');
 
+Route::group(['prefix' => '/files'], function() {
+	Route::get('/upload', 'fileController@index');
+	Route::post('/One', 'fileController@recieveOne')->name('PostOneFile');
+	Route::post('/Many', 'fileController@recieveMany')->name('PostManyFiles');
+});
+
 Route::group(['prefix' => '/admin'], function() {
   Route::get('/home', 'home@index');
 
