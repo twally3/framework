@@ -34,6 +34,10 @@ class Session {
     $_SESSION[$key] = $value;
   }
 
+  public static function append($key, $value) {
+    $_SESSION[$key][] = $value;
+  }
+
   public static function get($key) {
     if (self::isset($key)) {
       return $_SESSION[$key];

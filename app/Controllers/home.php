@@ -52,12 +52,6 @@ class Home extends Controller {
     $this->view("home/hello", ['name' => $name]);
   }
 
-  public function csrf() {
-    $num = openssl_random_pseudo_bytes(32);
-    $encode = base64_encode($num);
-    echo $encode;
-  }
-
   public function page1($name = '') {
     $arr = [1,2,3,4,5,6];
 
@@ -74,15 +68,6 @@ class Home extends Controller {
 
   public function page2() {
     $this->view("home/page2");
-  }
-
-  public function get() {
-    $this->view('home/get', ['post' => $_POST, 'p' => '<h3>HEY</h3>', 'route' => Route::path('geoff')]);
-  }
-
-  public function post() {
-    $this->view('home/post', ['post' => $_POST]);
-    // $this->json($_POST);
   }
 
   public function anchor() {

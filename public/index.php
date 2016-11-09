@@ -9,14 +9,8 @@ require_once '../app/core/helpers.php';
 set_error_handler("customErrorCatch");
 
 try {
-  // throw new Exception('THE SHIT IS FUCKED');
+
   include '../app/init.php';
-
-  session::start();
-  if (!Session::isset('csrf_token')) {
-    session::set('csrf_token', base64_encode(openssl_random_pseudo_bytes(32)));
-  }
-
   include '../app/http/routes.php';
   Route::submit();
 

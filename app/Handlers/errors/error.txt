@@ -21039,3 +21039,23 @@
 1478712204 | No files given! 
 1478712212 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalJop9LV on line 11 
 1478712267 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvaltVVZ1F on line 9 
+1478719027 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalqsP3Ig on line 11 
+1478719040 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalGUTVIR on line 11 
+1478719083 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEval6FL5Bb on line 11 
+1478719106 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalcrIF8p on line 10 
+1478719134 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalUYm3NR on line 10 
+1478719146 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalHarE3m on line 10 
+1478719153 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalzotzOv on line 10 
+1478719162 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEval5Et4ZO on line 11 
+1478719194 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalW0bVWK on line 11 
+1478721955 | Page does not exist 
+1478722023 | Error: 2 file_get_contents(../app/views/home/get.tea.php): failed to open stream: No such file or directory in file /Users/Max/OneDrive/LAMP/www/framework/app/core/Tea.php on line 8 
+1478722308 | Error: 8 Undefined variable: Request in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/requestController.php on line 26 
+1478722808 | Error: 8 Array to string conversion in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/requestController.php on line 26 
+1478722845 | Error: 8 Array to string conversion in file /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/requestController.php on line 26 
+1478722904 | Error: 8 Undefined index: _token in file /Users/Max/OneDrive/LAMP/www/framework/app/core/Requests.php on line 156 
+1478723085 | Page does not exist 
+1478723352 | Page does not exist 
+1478726983 | Page does not exist 
+1478726988 | Page does not exist 
+1478726989 | Page does not exist 
