@@ -21005,3 +21005,37 @@
 1478703100 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalFTCvLp on line 10 
 1478703260 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalrggahp on line 9 
 1478703271 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalb6FBqC on line 9 
+1478711549 | Error: 8 Undefined property: File::$fileExtention in file /Users/Max/OneDrive/LAMP/www/framework/app/core/file.php on line 109 
+1478711657 | Error: 8 Only variables should be passed by reference in file /Users/Max/OneDrive/LAMP/www/framework/app/core/file.php on line 109 
+1478711755 | Error: 2 Missing argument 1 for File::uniqueName(), called in /Users/Max/OneDrive/LAMP/www/framework/app/Controllers/fileController.php on line 35 and defined in file /Users/Max/OneDrive/LAMP/www/framework/app/core/file.php on line 106 
+1478711776 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalsrht88 on line 10 
+1478711777 | Page does not exist 
+1478711777 | Page does not exist 
+1478711777 | Page does not exist 
+1478711803 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalqF7ikh on line 10 
+1478711803 | Page does not exist 
+1478711803 | Page does not exist 
+1478711803 | Page does not exist 
+1478711819 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEval1tjsNn on line 10 
+1478711820 | Page does not exist 
+1478711820 | Page does not exist 
+1478711820 | Page does not exist 
+1478711860 | Page does not exist 
+1478711867 | No files given! 
+1478711874 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalxTEzsb on line 10 
+1478711874 | Page does not exist 
+1478711874 | Page does not exist 
+1478711874 | Page does not exist 
+1478711898 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalPSfWyB on line 10 
+1478711898 | Page does not exist 
+1478711898 | Page does not exist 
+1478711898 | Page does not exist 
+1478711905 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalHmyFKH on line 10 
+1478711906 | Page does not exist 
+1478711906 | Page does not exist 
+1478711906 | Page does not exist 
+1478712028 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEval6dKECQ on line 10 
+1478712190 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalNabPjX on line 11 
+1478712204 | No files given! 
+1478712212 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvalJop9LV on line 11 
+1478712267 | Error: 8 Undefined variable: fname in file /private/var/folders/nr/h6g62fkj2j1gz6bvfgjh0dz80000gn/T/fakeEvaltVVZ1F on line 9 
