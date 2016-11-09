@@ -10,9 +10,13 @@ function customErrorCatch($num, $msg, $file, $line) {
   throw new Exception('Error: '. $num . ' ' . $msg. ' in file '. $file. ' on line '. $line);
 }
 
-function csrf_token() {
+function csrf_field() {
 	$token = $_SESSION['csrf_token'];
 	return '<input name="_token" type="hidden" value="' . $token . '">';
+}
+
+function csrf_token() {
+	return $_SESSION['csrf_token'];
 }
 
 function methodPut() {

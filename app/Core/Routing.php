@@ -180,8 +180,4 @@ class Route {
       return implode('/', $groups);
     }
   }
-
-  public function absPath($name, $params = []) {
-    return "/" . $this->path($name, $params);
-  }
 }

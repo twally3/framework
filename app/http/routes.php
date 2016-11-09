@@ -8,10 +8,10 @@ Route::get('/function/{name}?/{age}', function($name, $age = null) {
   echo "name: $name, age: $age";
 });
 
-Route::group(['prefix' => 'testing'], function() {
+Route::group(['prefix' => '/testing'], function() {
 	
 	Route::get('/requests', 'requestController@get');
-	Route::post('/requests', 'requestController@post')->name('PostRequestTest');
+	Route::post('/requests', 'requestController@post')->name('RequestPost');
 	Route::put('/requests', 'home@post');
 	Route::delete('/requests', 'home@post');
 	
