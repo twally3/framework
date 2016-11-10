@@ -9,8 +9,40 @@ Class ORM {
   protected static $_operators = [];
   protected static $_additional = '';
 
+  protected static $_vars = ['table', 'hidden', 'primaryKey', 'timestamps'];
+
   function __get($arg) {
     return $this->$arg();
+  }
+
+  function __toString() {
+    return $this->getJson();
+  }
+
+  function getJson() {
+    $objs = unserialize(serialize($this));
+    $hidden = isset($objs::$hidden) ? $objs::$hidden : [];
+
+    if (is_object(end($objs))) {
+      // List of objects
+      foreach ($objs as $obj) {
+        foreach ($hidden as $hide) {
+          if (isset($obj->$hide)) {
+            unset($obj->$hide);
+          }
+        }
+      }
+    } else {
+      // single object
+      foreach ($hidden as $hide) {
+        echo $hide;
+        if (isset($obj->$hide)) {
+          unset($obj->$hide);
+        }
+      }
+    }
+    // return $objs;
+    return json_encode($objs);
   }
 
   static function setupModels() {
@@ -86,13 +118,21 @@ Class ORM {
     return $data;
   }
 
+  static function castClass($class, $object) {
+    return unserialize(preg_replace('/^O:\d+:"[^"]++"/', 'O:' . strlen($class) . ':"' . $class . '"', serialize($object)));
+  }
+
   static function all() {
     $class = self::className();
     $name = self::tableName();
     $data = Database::select($name);
     $data = $data->fetchAll(PDO::FETCH_CLASS, $class);
 
-    return $data = isset($data) ? $data : null;
+    if (isset($data)) {
+      return $data = self::castClass($class, (object) $data);
+    }
+    return null;
+    // return $data = isset($data) ? $data : null;
   }
 
   static function where($field, $value) {
@@ -129,12 +169,17 @@ Class ORM {
     self::$_operators = [];
     self::$_additional = '';
 
-    return $data = count($data) > 0 ? $data : null;
+    if (count($data) > 0) {
+      return self::castClass($class, (object) $data);
+    }
+    return null;
+    // return $data = (count($data) > 0) ? $data : null;
   }
 
   function first() {
     $data = self::get();
-    return $data = isset($data[0]) ? $data[0] : null;
+    $item = reset($data);
+    return (isset($item)) ? $item : null;
   }
 
   function count() {
@@ -171,7 +216,8 @@ Class ORM {
     $operators = !empty(self::$_operators) ? self::$_operators : null;
     $query = Database::select($name, null, null, self::$_where, $operators);
     Database::delete($name, self::$_where, $operators);
-    return $query->fetchAll(PDO::FETCH_CLASS, $class);
+    $data = $query->fetchAll(PDO::FETCH_CLASS, $class);
+    return self::castClass($class, (object) $data);
   }
 
   function save() {
@@ -229,12 +275,15 @@ Class ORM {
     $where = [$field . "=" => $value];
 
     $query = Database::select($table, null, null, $where);
-    return $data = $query->fetchAll(PDO::FETCH_CLASS, $className);
+    $data = $query->fetchAll(PDO::FETCH_CLASS, $className);
+
+    return self::castClass($className, (object) $data);
   }
 
   function hasOne($className, $join=null) {
     $data = $this->hasMany($className, $join);
-    return $data[0];
+    $data = reset($data);
+    return $data;
   }
 
   function belongsTo($className, $join=null) {
@@ -274,6 +323,8 @@ Class ORM {
 
     $query = Database::select($pivotName, 'X.*', $join, $where);
     $data = $query->fetchAll(PDO::FETCH_CLASS, $className);
+
+    $data = self::castClass($className, (object) $data);
 
     return $data;
   }

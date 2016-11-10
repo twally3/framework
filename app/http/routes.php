@@ -17,6 +17,8 @@ Route::group(['prefix' => '/testing'], function() {
 	
 });
 
+Route::get('/ormjson', 'ormController@index');
+
 
 Route::get('/page1/{name}?', 'home@page1');
 Route::get('/page2', 'home@page2');

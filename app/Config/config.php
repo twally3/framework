@@ -1,6 +1,7 @@
 <?php
 
 define("DEBUGGING", TRUE);
+define("LOGGING", false);
 
 define('DB_TYPE', 'mysql');
 define('DB_NAME','models');

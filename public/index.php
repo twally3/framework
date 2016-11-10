@@ -15,13 +15,15 @@ try {
   Route::submit();
 
 } catch(Exception $e) {
-  $error = $e->getMessage();
-  $txt = file_get_contents("../app/handlers/errors/error.txt");
+  if (LOGGING) {
+    $error = $e->getMessage();
+    $txt = file_get_contents("../app/handlers/errors/error.txt");
 
-  $myfile = fopen("../app/handlers/errors/error.txt", "w");
-  $txt .= time() . " | $error \n";
-  fwrite($myfile, $txt);
-  fclose($myfile);
+    $myfile = fopen("../app/handlers/errors/error.txt", "w");
+    $txt .= time() . " | $error \n";
+    fwrite($myfile, $txt);
+    fclose($myfile);
+  }
 
   if (DEBUGGING) {
     var_dump($e->getMessage());
