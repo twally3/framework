@@ -3,12 +3,6 @@
 define("DEBUGGING", TRUE);
 define("LOGGING", false);
 
-define('DB_TYPE', 'mysql');
-define('DB_NAME','models');
-define('DB_USER', 'root');
-define('DB_PASS', 'root');
-define('DB_HOST', '127.0.0.1');
-
 // define('MAIL_SECURE', 'ssl');
 // define('MAIL_HOST', 'smtp.gmail.com');
 // define('MAIL_PORT', 465);

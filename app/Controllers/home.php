@@ -87,4 +87,7 @@ class Home extends Controller {
   public function test2(Closure $callback) {
     $callback('Max');
   }
+  public function middleware() {
+    $this->view('home/middleware');
+  }
 }

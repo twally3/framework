@@ -1,4 +1,6 @@
-<?php
+<?php namespace Framework\Core\Database;
+
+use \PDO as PDO;
 
 class Migrations {
 
@@ -23,7 +25,7 @@ class Migrations {
     $name = $name;
     $fileName = time() . "_" . $name . ".php";
 
-    $txt = file_get_contents("./core/template.php");
+    $txt = file_get_contents(__DIR__ . "/template.php");
     $txt = str_replace('INSERTNAMEHERE', $name, $txt);
 
     $myfile = fopen('./migrations/'.$fileName, "w") or die("Unable to open file!");

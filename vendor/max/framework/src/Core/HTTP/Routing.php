@@ -1,9 +1,13 @@
 <?php namespace Framework\Core\HTTP;
 
+use App\HTTP\Kernal as Kernal;
+use ReflectionMethod;
+
 class Route {
 
   protected static $_prefix = null;
   protected static $_middleware = null;
+  protected static $_request = null;
 
   protected static $_uri = [];
   protected static $_requestTypes = ['put', 'post', 'delete'];
@@ -94,40 +98,42 @@ class Route {
     foreach (self::$_uri as $key => $value) {
       if (preg_match($value['uri'], $uriGetParam, self::$_params) && $value['rtype'] == $rtype) {
         array_splice(self::$_params, 0, 1);
-        if (!empty($_GET) || !empty($_POST)) {
-          array_unshift(self::$_params, new Request);
-        }
-
         return $value;
       }
     }
     return null;
   }
 
-  public static function getMiddleware($request) {
-    $middleware = $request['middleware'];
-    $x = \Kernal::getProp('routeMiddleware');
+  public static function getMiddleware($route) {
+    $middleware = $route['middleware'];
+    $x = Kernal::getProp('routeMiddleware');
+    $found = [];
 
     foreach ($middleware as $key => $value) {
       if (array_key_exists($value, $x)) {
-        echo "Middleware {$value} Found!";
-        require_once "../{$x[$value]}";
-        $x = new $value;
-        $x->handle();
+        $name = $x[$value];
+        $dir = str_replace('::class', '.php', str_replace('\\', '/', $name));
+        $name = str_replace('::class', '', $name);
+        require "../{$dir}";
+        $found[] = new $name;
       }
     }
 
-    die;
-    // foreach ($request['middleware'] as $key => $value) {
-    //   echo $value . '<br>';
-    //   if(file_exists('../app/http/Middleware/' . $value . '.php')) {
-    //     require_once "../app/http/Middleware/" . $value . ".php";
-    //     $x = new $value;
-    //     $x->handle();
-    //   } else {
-    //     throw new \Exception("Invalid middleware $value");
-    //   }
-    // }
+    foreach ($found as $mid) {
+      $mid->handle();
+    }
+  }
+
+  public static function useRequest($class, $method) {
+    $reflector = new ReflectionMethod($class, $method);
+    $dependencies = $reflector->getParameters();
+    $class = isset($dependencies[0]) ? $dependencies[0]->getClass() : null;
+
+    if (isset($class->name) && ($class->name == 'Framework\Core\HTTP\Request')) {
+      self::$_request = new Request;
+      array_unshift(self::$_params, self::$_request);
+    }
+
   }
 
   public static function submit() {
@@ -136,11 +142,6 @@ class Route {
     }
 
     $request = self::findMatch();
-
-    if (isset($request['middleware'])) {
-      self::getMiddleware($request);
-    }
-
     $callback = is_null($request) ? null : $request['method'];
 
     if (is_string($callback)) {
@@ -159,6 +160,12 @@ class Route {
         self::$_method = $callback[1];
       } else {
         throw new \Exception('Page does not exist');
+      }
+
+      self::useRequest($callback[0], $callback[1]);
+
+      if (isset($request['middleware'])) {
+        self::getMiddleware($request);
       }
 
       call_user_func_array([self::$_controller, self::$_method], self::$_params);

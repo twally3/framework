@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\HTTP;
 
 use Framework\Core\HTTPKernal as HTTPKernal;
 
@@ -9,7 +9,9 @@ Class Kernal extends HTTPKernal {
 
 	protected static $routeMiddleware = [
 		// route middleware goes here
-		'http' => 'app/http/middleware/web.php'
+		'http' => 'App\HTTP\Middleware\Web::class',
+		'thing' => 'App\HTTP\Middleware\Thing::class',
+		'auth' => 'App\HTTP\Middleware\Auth::class'
 		
 	];
 }

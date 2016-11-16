@@ -9,13 +9,13 @@ Route::get('/function/{name}?/{age}', function($name, $age = null) {
   echo "name: $name, age: $age";
 });
 
-// Route::group(['middleware' => 'http'], function() {
-// 	Route::get('/middleware', 'home@middleware');
-// });
+Route::group(['middleware' => ['http']], function() {
+	Route::get('/middleware', 'home@middleware');
+});
 
 Route::get('/closure', 'home@test');
 
-Route::group(['prefix' => '/testing'], function() {
+Route::group(['prefix' => '/testing', 'middleware' => 'http'], function() {
 	
 	Route::get('/requests', 'requestController@get');
 	Route::post('/requests', 'requestController@post')->name('RequestPost');

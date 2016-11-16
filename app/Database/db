@@ -1,12 +1,23 @@
 <?php
 
-require '../config/config.php';
-require './core/Database.php';
-Database::construct();
+use Framework\Core\Database\Database as Database;
+use Framework\Core\Database\Migrations as Migrations;
 
-require './core/migrations.php';
-require './core/schema.php';
-require './core/table.php';
+$dir = dirname(__DIR__);
+
+require '../config/db_config.php';
+
+require "$dir/../vendor/max/Framework/src/core/Database/Database.php";
+require "$dir/../vendor/max/Framework/src/core/Database/migrations.php";
+require "$dir/../vendor/max/Framework/src/core/Database/schema.php";
+require "$dir/../vendor/max/Framework/src/core/Database/table.php";
+
+// foreach (glob("./migrations/*.php") as $filename) {
+//   // echo $filename;
+//   require_once $filename;
+// }
+
+Database::construct();
 
 Switch ($argv[1]) {
   case 'migrate':

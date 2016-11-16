@@ -6,8 +6,7 @@ use Framework\Core\HTTP\Session as Session;
 use Framework\Core\Database\Database as Database;
 
 require_once 'config/config.php';
-
-require_once '../vendor/max/Framework/src/core/Helpers/helpers.php';
+require_once 'config/db_config.php';
 
 require_once '../vendor/max/Framework/src/core/HTTPKernal.php';
 require_once '../vendor/max/Framework/src/core/ORM/ORM.php';
