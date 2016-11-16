@@ -1,5 +1,6 @@
 <?php namespace App\HTTP\Middleware;
 
+use Framework\Core\HTTP\Session as Session;
 use Closure;
 
 class Web {
@@ -8,6 +9,10 @@ class Web {
   // }
 
 	public function handle($request) {
-    echo "WEB handled";
+		if ($request->_token != Session::get('csrf_token')) {
+			redirect('/testing/requests');
+		}
+
+    return;
   }
 }

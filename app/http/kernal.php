@@ -9,9 +9,7 @@ Class Kernal extends HTTPKernal {
 
 	protected static $routeMiddleware = [
 		// route middleware goes here
-		'http' => 'App\HTTP\Middleware\Web::class',
-		'thing' => 'App\HTTP\Middleware\Thing::class',
-		'auth' => 'App\HTTP\Middleware\Auth::class'
+		'http' => 'App\HTTP\Middleware\Web::class'
 		
 	];
 }

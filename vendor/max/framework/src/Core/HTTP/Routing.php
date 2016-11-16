@@ -108,6 +108,8 @@ class Route {
   public static function getMiddleware($route) {
     if (is_null(self::$_request)) return;
 
+    $params = [self::$_request];
+
     $middleware = $route['middleware'];
     $x = Kernal::getProp('routeMiddleware');
     $found = [];
@@ -123,7 +125,8 @@ class Route {
     }
 
     foreach ($found as $mid) {
-      $mid->handle(self::$_request);
+      // $mid->handle(self::$_request);
+      call_user_func_array([$mid, 'handle'], $params);
     }
   }
 
