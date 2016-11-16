@@ -1,5 +1,6 @@
 <?php
 
+use Framework\Core\HTTP\Request as Request;
 use Framework\Core\HTTP\Route as Route;
 
 Route::get('/', 'home@index');

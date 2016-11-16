@@ -7,7 +7,7 @@ class Web {
   //   echo "handled";
   // }
 
-	public function handle() {
+	public function handle($request) {
     echo "WEB handled";
   }
 }

@@ -2,6 +2,7 @@
 
 use App\HTTP\Kernal as Kernal;
 use ReflectionMethod;
+use ReflectionFunction;
 
 class Route {
 
@@ -105,6 +106,8 @@ class Route {
   }
 
   public static function getMiddleware($route) {
+    if (is_null(self::$_request)) return;
+
     $middleware = $route['middleware'];
     $x = Kernal::getProp('routeMiddleware');
     $found = [];
@@ -120,20 +123,25 @@ class Route {
     }
 
     foreach ($found as $mid) {
-      $mid->handle();
+      $mid->handle(self::$_request);
     }
   }
 
-  public static function useRequest($class, $method) {
-    $reflector = new ReflectionMethod($class, $method);
+  public static function useRequest($class, $method=null) {
+    $reflector;
+    if (!is_null($method)) {
+      $reflector = new ReflectionMethod($class, $method);
+    } else {
+      $reflector = new ReflectionFunction($class);
+    }
+
     $dependencies = $reflector->getParameters();
     $class = isset($dependencies[0]) ? $dependencies[0]->getClass() : null;
-
+    
     if (isset($class->name) && ($class->name == 'Framework\Core\HTTP\Request')) {
       self::$_request = new Request;
       array_unshift(self::$_params, self::$_request);
     }
-
   }
 
   public static function submit() {
@@ -171,6 +179,7 @@ class Route {
       call_user_func_array([self::$_controller, self::$_method], self::$_params);
     } else if (is_callable($callback)) {
       self::$_method = $callback;
+      self::useRequest($callback);
       call_user_func_array(self::$_method, self::$_params);
     } else {
       throw new \Exception('Page does not exist');
