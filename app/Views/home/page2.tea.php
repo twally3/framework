@@ -8,7 +8,7 @@
   <section>
     Contact us page <br>
     You're really gonna love it here! <br>
-    <a href="{{=Route::path('anchor')}}#aboutSection">This is a link</a>
+    <a href="{Route::path('anchor')}#aboutSection">This is a link</a>
 
   </section>
 @endsection

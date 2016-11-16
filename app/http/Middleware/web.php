@@ -2,7 +2,7 @@
 
 
 class Web {
-  public function handle() {
+  public function handle(Request $request, Closure $next) {
     echo "handled";
   }
 }

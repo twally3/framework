@@ -1,5 +1,9 @@
 <?php
 
+use Framework\Core\HTTP\Controller as Controller;
+use Framework\Core\HTTP\Request as Request;
+use Framework\Core\HTTP\Route as Route;
+
 class Home extends Controller {
 
   public function profiles($username) {
@@ -45,7 +49,7 @@ class Home extends Controller {
   }
 
   public function index() {
-    include '../app/handlers/view/noRoutes.php';
+    include '../vendor/max/framework/src/core/views/noRoutes.php';
   }
 
   public function hello($name='') {
@@ -72,5 +76,15 @@ class Home extends Controller {
 
   public function anchor() {
     $this->view('home/anchor');
+  }
+
+  public function test() {
+    $this->test2(function($name) {
+      echo "Your name is {$name}";
+    });
+  }
+
+  public function test2(Closure $callback) {
+    $callback('Max');
   }
 }

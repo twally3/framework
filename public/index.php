@@ -3,16 +3,16 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require_once '../app/config/config.php';
-require_once '../app/core/helpers.php';
-
-set_error_handler("customErrorCatch");
 
 try {
 
   include '../app/init.php';
+  
+  set_error_handler("customErrorCatch");
+  register_shutdown_function('fatalErrorShutdownHandler');
+
   include '../app/http/routes.php';
-  Route::submit();
+  Framework\Core\HTTP\Route::submit();
 
 } catch(Exception $e) {
   if (LOGGING) {

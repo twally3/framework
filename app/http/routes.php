@@ -1,5 +1,6 @@
 <?php
 
+use Framework\Core\HTTP\Route as Route;
 
 Route::get('/', 'home@index');
 Route::get('/home/{name}', 'home@hello');
@@ -7,6 +8,12 @@ Route::get('/home/{name}', 'home@hello');
 Route::get('/function/{name}?/{age}', function($name, $age = null) {
   echo "name: $name, age: $age";
 });
+
+// Route::group(['middleware' => 'http'], function() {
+// 	Route::get('/middleware', 'home@middleware');
+// });
+
+Route::get('/closure', 'home@test');
 
 Route::group(['prefix' => '/testing'], function() {
 	

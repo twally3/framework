@@ -1,5 +1,7 @@
 <?php
 
+use Framework\Core\ORM\ORM as ORM;
+
 class Listener extends ORM {
 
   protected static $timestamps = false;

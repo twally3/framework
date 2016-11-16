@@ -1,5 +1,7 @@
 <?php
 
+use Framework\Core\ORM\ORM as ORM;
+
 class Album extends ORM {
 
 	//protected static $table = 'tablename';
