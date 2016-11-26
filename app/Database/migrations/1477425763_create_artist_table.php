@@ -1,10 +1,12 @@
 <?php
 
-use Framework\Core\Database\Migrations as Migrations;
-use Framework\Core\Database\Schema as Schema;
+namespace App\Database\Migrations;
 
+use Framework\Core\Support\MigrationsInterface;
+use Framework\Core\Database\Migrations;
+use \Schema;
 
-class create_artist_table extends Migrations {
+class create_artist_table implements MigrationsInterface {
 
   public function up() {
 

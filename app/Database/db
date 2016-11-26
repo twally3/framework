@@ -1,7 +1,7 @@
 <?php
 
-use Framework\Core\Database\Database as Database;
 use Framework\Core\Database\Migrations as Migrations;
+use Framework\Core\Database\Database as Database;
 
 $dir = dirname(__DIR__);
 

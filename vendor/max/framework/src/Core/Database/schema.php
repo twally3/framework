@@ -1,9 +1,19 @@
-<?php namespace Framework\Core\Database;
+<?php
+
+namespace Framework\Core\Database;
+
+use Framework\Core\Foundation\Application;
+use Framework\Core\Database\Table;
 
 class Schema {
 
-  static function create($name, $callback) {
-    $table = new Table;
+  public function __construct(Application $app, Database $db) {
+    $this->db = $db;
+    $this->app = $app;
+  }
+
+  function create($name, $callback) {
+    $table = $this->app->resolve('table');
 
     call_user_func($callback, $table);
 
@@ -11,20 +21,20 @@ class Schema {
     $query = "CREATE TABLE `$name` (" . $query . ")";
 
     echo "[NOTE] Trying: $query ...\n";
-    Database::query($query);
+    $this->db->query($query);
 
     echo "[SUCCESS] Added table [$name] \n";
   }
 
-  static function drop($name) {
+  function drop($name) {
     $query = "DROP TABLE {$name}";
     echo "[NOTE] Trying: $query ...\n";
-    Database::query($query);
+    $this->db->query($query);
     echo "[SUCCESS] Dropped table [$name] \n";
   }
 
-  static function table($name, $callback) {
-    $table = new Table;
+  function table($name, $callback) {
+    $table = $this->app->resolve('table');
 
     call_user_func($callback, $table);
 
@@ -33,18 +43,18 @@ class Schema {
     $query = rtrim($query, ',');
 
     echo "[NOTE] Trying: $query ...\n";
-    Database::query($query);
+    $this->db->query($query);
 
     echo "[SUCCESS] Updated table [$name] \n";
   }
 
 
-  static function dropColumn($table, $column) {
-    $test = Database::query("SHOW TABLES LIKE '$table'");
+  function dropColumn($table, $column) {
+    $test = $this->db->query("SHOW TABLES LIKE '$table'");
     if ($test->rowCount() > 0) {
-      $query = "ALTER TABLE $table DROP $column IF EXISTS";
+      $query = "ALTER TABLE $table DROP $column";
       echo "[NOTE] Trying: $query ...\n";
-      Database::query($query);
+      $this->db->query($query);
       echo "[SUCCESS] Dropped $column from [$table] \n";
     }
   }

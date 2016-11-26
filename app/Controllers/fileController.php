@@ -1,12 +1,11 @@
 <?php
 
-use Framework\Core\HTTP\Controller as Controller;
-use Framework\Core\HTTP\Route as Route;
-use Framework\Core\HTTP\Request as Request;
+use Framework\Core\HTTP\Controller;
+use Framework\Core\HTTP\Request;
 
 Class fileController extends Controller {
 	public function index() {
-		$this->view('files/files');
+		View::make('files/files');
 	}
 
 	public function recieve(Request $request) {
@@ -35,7 +34,7 @@ Class fileController extends Controller {
 
 
 		$file->store('files', $file->getName());
-		$this->view('files/recieveOne', ['file' => $file]);
+		View::make('files/recieveOne', ['file' => $file]);
 	}
 
 	public function recieveMany(Request $request) {
@@ -45,7 +44,7 @@ Class fileController extends Controller {
 			foreach ($files as $file) {
 				$file->store('files', $file->uniqueName('files'));
 			}
-			$this->view('files/recieveMany', ['files' => $files]);
+			View::make('files/recieveMany', ['files' => $files]);
 		} else {
 			throw new Exception('No files given!');
 		}

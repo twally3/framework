@@ -1,23 +1,30 @@
-<?php namespace Framework\Core\Database;
+<?php 
+
+namespace Framework\Core\Database;
 
 use \PDO as PDO;
+use Framework\Core\Foundation\Application;
 
 class Migrations {
 
-  static function install() {
-    echo "Creating Migrations table \n";
+  public function __construct(Application $app, Database $database) {
+    $this->app = $app;
+    $this->db = $database;
 
+    require_once $this->app->basepath . '/vendor/max/framework/src/core/support/MigrationsInterface.php';
+  }
+
+  function install() {
     $sql = "CREATE TABLE migrations
             (
               migration VARCHAR(255) NOT NULL UNIQUE,
               batch INT NOT NULL
             );";
 
-    $query = Database::query($sql);
-    echo "Table created successfully \n";
+    $query = $this->db->query($sql);
   }
 
-  static function make($name) {
+  function make($name) {
     if (!isset($name)) {
       die("Name not given \n");
     }
@@ -25,20 +32,20 @@ class Migrations {
     $name = $name;
     $fileName = time() . "_" . $name . ".php";
 
-    $txt = file_get_contents(__DIR__ . "/template.php");
+    $txt = file_get_contents($this->app->basepath . "/vendor/max/framework/src/core/Database/template.php");
     $txt = str_replace('INSERTNAMEHERE', $name, $txt);
 
-    $myfile = fopen('./migrations/'.$fileName, "w") or die("Unable to open file!");
+    $myfile = fopen($this->app->basepath . '/app/Database/migrations/'.$fileName, "w") or die("Unable to open file!");
     fwrite($myfile, $txt);
     fclose($myfile);
   }
 
-  static function migrate() {
+  function migrate() {
     $files = [];
     $batch = 0;
     $migrations = [];
 
-    $query = Database::select('migrations');
+    $query = $this->db->select('migrations');
     $data = $query->fetchAll(PDO::FETCH_OBJ);
 
     foreach ($data as $x) {
@@ -48,7 +55,7 @@ class Migrations {
       $migrations[] = $x->migration;
     }
 
-    foreach (glob("./migrations/*.php") as $filename) {
+    foreach (glob($this->app->basepath . "/app/database/migrations/*.php") as $filename) {
         $file = explode("/", $filename);
         $file = array_pop($file);
         $file = explode(".", $file);
@@ -60,16 +67,16 @@ class Migrations {
     }
 
     foreach ($files as $file) {
-      self::runUp($file);
-      Database::insert('migrations', ['migration' => $file, 'batch' => $batch + 1]);
+      $this->runUp($file);
+      $this->db->insert('migrations', ['migration' => $file, 'batch' => $batch + 1]);
     }
   }
 
-  static function rollback() {
+  function rollback() {
     $batch = 0;
     $names = [];
 
-    $query = Database::select('migrations');
+    $query = $this->db->select('migrations');
     $data = $query->fetchAll(PDO::FETCH_OBJ);
 
     foreach ($data as $x) {
@@ -79,19 +86,19 @@ class Migrations {
     }
 
 
-    $query = Database::select('migrations', null, null, ['batch =' => $batch]);
+    $query = $this->db->select('migrations', null, null, ['batch =' => $batch]);
     $data = $query->fetchAll(PDO::FETCH_OBJ);
     $data = array_reverse($data);
 
     foreach ($data as $x) {
-      self::runDown($x->migration);
+      $this->runDown($x->migration);
     }
 
-    Database::delete('migrations', ['batch =' => $batch]);
+    $this->db->delete('migrations', ['batch =' => $batch]);
   }
 
-  static function runUp($file) {
-    $dir = "./migrations/" . $file . ".php";
+  function runUp($file) {
+    $dir = $this->app->basepath . "/app/Database/migrations/" . $file . ".php";
 
     include $dir;
 
@@ -99,24 +106,26 @@ class Migrations {
     array_shift($class);
     $class = implode('_', $class);
 
+    $class = 'App\Database\Migrations\\' . $class;
     $x = new $class;
     $x->up();
   }
 
-  static function runDown($file) {
-    $dir = "./migrations/" . $file . ".php";
+  function runDown($file) {
+    $dir = $this->app->basepath . "/app/Database/migrations/" . $file . ".php";
 
     include $dir;
 
     $class = explode('_', $file);
     array_shift($class);
     $class = implode('_', $class);
-
+    
+    $class = 'App\Database\Migrations\\' . $class;
     $x = new $class;
     $x->down();
   }
 
-  static function seed($name) {
+  function seed($name) {
     echo "[NOTE] Seeding table $name \n";
     if (!isset($name)) {
       die("Name not given \n");
@@ -125,23 +134,23 @@ class Migrations {
     $name = $name;
     $fileName = $name . ".json";
 
-    $query = Database::select($name);
+    $query = $this->db->select($name);
     $data = $query->fetchAll(PDO::FETCH_OBJ);
     $data = json_encode($data);
 
-    if (file_exists('./seeds/'.$fileName)) {
-      unlink('./seeds/'.$fileName);
+    if (file_exists($this->app->basepath . '/app/database/seeds/'.$fileName)) {
+      unlink($this->app->basepath . '/app/database/seeds/'.$fileName);
       echo "Deleted old {$fileName} \n";
     }
 
-    $myfile = fopen('./seeds/'.$fileName, "w") or die("Unable to open file!");
+    $myfile = fopen($this->app->basepath . '/app/database/seeds/'.$fileName, "w") or die("Unable to open file!");
     fwrite($myfile, $data);
     fclose($myfile);
 
     echo "[SUCCESS] Seeded table $name \n";
   }
 
-  static function upload($name) {
+  function upload($name) {
     echo "[NOTE] Uploading data from table $name \n";
     $columns = [];
     $string = '';
@@ -155,7 +164,7 @@ class Migrations {
     $name = $name;
     $fileName = $name . ".json";
 
-    $query = Database::select('INFORMATION_SCHEMA.COLUMNS', null, null, ['TABLE_SCHEMA =' => DB_NAME, 'TABLE_NAME = ' => $name]);
+    $query = $this->db->select('INFORMATION_SCHEMA.COLUMNS', null, null, ['TABLE_SCHEMA =' => DB_NAME, 'TABLE_NAME = ' => $name]);
     $data = $query->fetchAll(PDO::FETCH_OBJ);
 
     foreach ($data as $x) {
@@ -166,7 +175,7 @@ class Migrations {
     $cols = rtrim($cols, ', ');
     $cols = "({$cols})";
 
-    $contents = file_get_contents('./seeds/'.$fileName);
+    $contents = file_get_contents($this->app->basepath . '/app/database/seeds/'.$fileName);
     $contents = json_decode($contents);
 
     foreach ($contents as $content) {
@@ -181,11 +190,11 @@ class Migrations {
 
     echo "[NOTE] Truncating table $name \n";
 
-    Database::query("TRUNCATE TABLE {$name}");
+    $this->db->query("TRUNCATE TABLE {$name}");
 
     $sql = "INSERT INTO {$name} {$cols} VALUES {$vals}";
     echo "[NOTE] Applying SQL $sql \n";
-    Database::query($sql);
+    $this->db->query($sql);
 
     echo "[SUCCESS] Successfully restored data for $name \n";
 
@@ -193,9 +202,9 @@ class Migrations {
 
   public function init() {
     echo "[NOTE] Initialising project \n";
-    self::migrate();
+    $this->migrate();
 
-    $seeds = glob("./seeds/*.json");
+    $seeds = glob($this->app->basepath . "/app/database/seeds/*.json");
 
     foreach ($seeds as $seed) {
       $file = explode("/", $seed);
@@ -203,7 +212,7 @@ class Migrations {
       $file = explode(".", $file);
       $file = $file[0];
 
-      self::upload($file);
+      $this->upload($file);
     }
 
     echo "[SUCCESS] Database initiation completed \n";

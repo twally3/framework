@@ -1,9 +1,12 @@
 <?php
 
-use Framework\Core\Database\Migrations as Migrations;
-use Framework\Core\Database\Schema as Schema;
+namespace App\Database\Migrations;
 
-class create_album_table extends Migrations {
+use Framework\Core\Support\MigrationsInterface;
+use Framework\Core\Database\Migrations;
+use \Schema;
+
+class create_album_table implements MigrationsInterface {
 
   public function up() {
 

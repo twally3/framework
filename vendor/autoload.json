@@ -1,0 +1,11 @@
+{
+	"autoload": {
+		"namespace": {
+			"Framework\\": "/vendor/max/Framework/src"
+		},
+		"files": [
+			"/app/bootstrap/helpers.php",
+			"/app/config/Database.php"
+		]
+	}
+}

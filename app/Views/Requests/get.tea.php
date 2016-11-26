@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Test Form</h1>
-    <form action="{Route::path('PostRequestTest')}" method="post">
+    <form action="{Route::path('RequestPost')}" method="post">
       <input type="text" name="text">
       <input type="submit" name="submit" value="Lets go">
       {!csrf_field()}
@@ -19,8 +19,8 @@
 
     {$p}
     {!$p}
-    {!Route::path('PostRequestTest')}
-    {Route::path('PostRequestTest')}
+    {!Route::path('RequestPost')}
+    {Route::path('RequestPost')}
     {time()}
     {!time()}
   </body>

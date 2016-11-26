@@ -1,11 +1,14 @@
-<?php namespace Framework\Core\Database;
+<?php
+
+namespace Framework\Core\Database;
 
 use \PDO as PDO;
+use Framework\Core\Foundation\Application;
 
 class Database {
-  public static $_connection;
+  public $_connection;
 
-  public static function construct() {
+  public function __construct() {
     try {
       $handler = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
       $handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,47 +17,51 @@ class Database {
       exit();
     }
 
-    self::$_connection = $handler;
+    $this->_connection = $handler;
   }
 
-  public static function insert($table, $data) {
-    list($fields, $placeholders, $values) = self::prep_values($data);
+  public function sayHello() {
+    echo 'HEY';
+  }
+
+  public function insert($table, $data) {
+    list($fields, $placeholders, $values) = $this->prep_values($data);
 
     $sql = "INSERT INTO {$table} ({$fields}) VALUES ({$placeholders})";
-    $query = self::$_connection->prepare($sql);
+    $query = $this->_connection->prepare($sql);
 
     return $query->execute($values) ? true : false;
   }
 
-  public static function update($table, $data, $where, $operators=array()) {
-    list($fields, $placeholders, $values) = self::prep_values($data, 'update');
-    list($where_clause, $where_values) = self::prep_where($where, $operators);
+  public function update($table, $data, $where, $operators=array()) {
+    list($fields, $placeholders, $values) = $this->prep_values($data, 'update');
+    list($where_clause, $where_values) = $this->prep_where($where, $operators);
 
     $values = array_merge($values, $where_values);
 
     $sql = "UPDATE {$table} SET {$placeholders} WHERE {$where_clause}";
 
-    $query = self::$_connection->prepare($sql);
+    $query = $this->_connection->prepare($sql);
 
     return $query->execute($values) ? true : false;
   }
 
-  public static function delete($table, $where, $operators=array()) {
-    list($where_clause, $where_values) = self::prep_where($where, $operators);
+  public function delete($table, $where, $operators=array()) {
+    list($where_clause, $where_values) = $this->prep_where($where, $operators);
 
     $sql = "DELETE FROM {$table} WHERE {$where_clause}";
-    $query = self::$_connection->prepare($sql);
+    $query = $this->_connection->prepare($sql);
 
     return $query->execute($where_values) ? true : false;
   }
 
-  public static function select($table, $headings=null, $join=null, $where=array(), $operators=array(), $additional='') {
+  public function select($table, $headings=null, $join=null, $where=array(), $operators=array(), $additional='') {
     $headings = is_null($headings) ? '*' : $headings;
     $where = is_null($where) ? array() : $where;
     $operators = is_null($operators) ? array() : $operators;
     $join = is_null($join) ? '' : $join;
 
-    list($where_clause, $where_values) = self::prep_where($where, $operators);
+    list($where_clause, $where_values) = $this->prep_where($where, $operators);
     $where_values = !empty($where_values) ? $where_values : array();
 
     $sql = "SELECT {$headings} FROM {$table}";
@@ -69,25 +76,25 @@ class Database {
 
     $sql .= " " . $additional;
 
-    $query = self::$_connection->prepare($sql);
+    $query = $this->_connection->prepare($sql);
     $query->execute($where_values);
 
     return $query;
   }
 
-  public static function query($sql) {
-    return self::$_connection->query($sql);
+  public function query($sql) {
+    return $this->_connection->query($sql);
   }
 
-  public static function quote($string) {
-    return self::$_connection->quote($string);
+  public function quote($string) {
+    return $this->_connection->quote($string);
   }
 
-  public static function last_id() {
-    return self::$_connection->lastInsertId();
+  public function last_id() {
+    return $this->_connection->lastInsertId();
   }
 
-  public static function prep_values($data, $type='insert') {
+  public function prep_values($data, $type='insert') {
     $fields = '';
     $placeholders = '';
     $values = array();
@@ -106,12 +113,12 @@ class Database {
     $fields = substr($fields, 0, -1);
     $placeholders = substr($placeholders, 0, -1);
 
-    $values = self::htmlchars($values);
+    $values = $this->htmlchars($values);
 
     return array($fields, $placeholders, $values);
   }
 
-  public static function prep_where($where, $operators) {
+  public function prep_where($where, $operators) {
     $where_clause = '';
     $where_values = '';
     $count = 0;
@@ -135,11 +142,11 @@ class Database {
     return array($where_clause, $where_values);
   }
 
-  public static function htmlchars($array) {
+  public function htmlchars($array) {
     return array_map('htmlspecialchars', $array);
   }
 
-  public static function hash_password($password, $nonce) {
+  public function hash_password($password, $nonce) {
     $secureHash = hash_hmac('sha512', $password . $nonce, SITE_KEY);
 
     return $secureHash;

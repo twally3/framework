@@ -1,35 +1,17 @@
 <?php
-
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require_once '../vendor/max/Framework/src/core/Helpers/helpers.php';
+session_start();
 
-set_error_handler("customErrorCatch");
-register_shutdown_function('fatalErrorShutdownHandler');
+$autoload = require __DIR__ . '/../vendor/max/framework/src/core/foundation/autoload.php';
 
-try {
+$app = require_once  __DIR__ . '/../app/bootstrap/app.php';
 
-  include '../app/init.php';
-  
+$kernel = $app->resolve('httpkernel');
+$request = $app->resolve('request');
 
-  include '../app/http/routes.php';
-  Framework\Core\HTTP\Route::submit();
+$response = $kernel->handle($request);
 
-} catch(Exception $e) {
-  if (LOGGING) {
-    $error = $e->getMessage();
-    $txt = file_get_contents("../app/handlers/errors/error.txt");
 
-    $myfile = fopen("../app/handlers/errors/error.txt", "w");
-    $txt .= time() . " | $error \n";
-    fwrite($myfile, $txt);
-    fclose($myfile);
-  }
-
-  if (DEBUGGING) {
-    var_dump($e->getMessage());
-  }
-
-  die;
-}
+// send response!

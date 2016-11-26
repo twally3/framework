@@ -1,19 +1,22 @@
 <?php
 
-use Framework\Core\Database\Migrations as Migrations;
-use Framework\Core\Database\Schema as Schema;
+namespace App\Database\Migrations;
 
-class INSERTNAMEHERE extends Migrations {
+use Framework\Core\Support\MigrationsInterface;
+use Framework\Core\Database\Migrations;
+use \Schema;
+
+class INSERTNAMEHERE implements MigrationsInterface {
 
   public function up() {
 
-
+    
 
   }
 
   public function down() {
 
-
+    
 
   }
 

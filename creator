@@ -1,0 +1,10 @@
+<?php 
+
+// require_once __DIR__ . '/public/init.php';
+require_once __DIR__ . '/vendor/max/framework/src/core/foundation/autoload.php';
+
+$app = require_once  __DIR__ . '/app/bootstrap/app.php';
+
+$kernel = $app->resolve('clikernel');
+
+$response = $kernel->handle($argv);

@@ -1,6 +1,7 @@
 <?php namespace Framework\Core\ORM;
 
-use Framework\Core\Database\Database as Database;
+use \Database;
+use Framework\Core\ORM\ORM;
 use \PDO as PDO;
 
 Class ORM {
@@ -48,8 +49,8 @@ Class ORM {
     return json_encode($objs);
   }
 
-  static function setupModels() {
-    foreach (glob("../app/models/*.php") as $filename) {
+  static function setupModels($app) {
+    foreach (glob($app->basepath . "/app/models/*.php") as $filename) {
         require_once $filename;
     }
     

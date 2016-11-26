@@ -1,4 +1,6 @@
-<?php namespace Framework\Core\Database;
+<?php
+
+namespace Framework\Core\Database;
 
 class Table {
 
