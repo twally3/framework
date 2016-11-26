@@ -8,7 +8,8 @@ Class Kernel extends HTTPKernel {
 
 	protected $routeMiddleware = [
 
-		'web' => \Framework\Core\Middleware\Web::class
+		'web' => \Framework\Core\Middleware\Web::class,
+		'auth' => \App\HTTP\Middleware\AuthMiddleware::class
 
 	];
 

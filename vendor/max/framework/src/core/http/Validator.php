@@ -18,7 +18,10 @@ Class Validator {
 		'before' => 'isBefore',
 		'after' => 'isAfter',
 		'accepted' => 'isAccepted',
-		'required' => 'isRequired'
+		'required' => 'isRequired',
+		'matches' => 'doesMatch',
+		'unique' => 'isUnique',
+		'email' => 'isEmail'
 
 	];
 
@@ -99,7 +102,34 @@ Class Validator {
 	}
 
 	public function isRequired($name) {
+		// echo $this->request->$name;
+		// die;
 		if (is_null($this->request->$name)) return false;
+		return true;
+	}
+
+	public function doesMatch($name) {
+		$param = $this->param;
+		if (is_null($this->request->$name)) return false;
+		if ($this->request->$name != $this->request->$param) return false;
+		return true;
+	}
+
+	public function isUnique($name) {
+		$request = $this->request->$name;
+		$param = $this->param;
+		$param = explode(',', $param);
+		if (count($param) != 2) return false;
+		$query = \Database::select($param[0], null, null, [$param[1] . '=' => $request]);
+		$data = $query->fetchAll(\PDO::FETCH_OBJ);
+
+		if (!empty($data)) return false;
+		return true;
+
+	}
+
+	public function isEmail($name) {
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return false;
 		return true;
 	}
 }

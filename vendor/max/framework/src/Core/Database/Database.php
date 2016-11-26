@@ -56,7 +56,7 @@ class Database {
   }
 
   public function select($table, $headings=null, $join=null, $where=array(), $operators=array(), $additional='') {
-    $headings = is_null($headings) ? '*' : $headings;
+    $headings = is_null($headings) ? '*' : implode(',', $headings);
     $where = is_null($where) ? array() : $where;
     $operators = is_null($operators) ? array() : $operators;
     $join = is_null($join) ? '' : $join;

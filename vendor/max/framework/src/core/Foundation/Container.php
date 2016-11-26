@@ -116,10 +116,17 @@ class Container implements ArrayAccess {
 			// 	continue;
 			// }
 
-			$name = explode('\\', $class->name);
-			$name = strtolower(array_pop($name));
+			foreach ($this->bindings as $key => $value) {
+				if ($value['value'] == $class->name) {
+					$name = $key;
+					break;
+				}
+			}
 
-			$classArgs[] = $this->resolve(strtolower($name));
+			// $name = explode('\\', $class->name);
+			// $name = strtolower(array_pop($name));
+
+			$classArgs[] = $this->resolve($name);
 		}
 
 		$classArgs = array_reverse($classArgs);

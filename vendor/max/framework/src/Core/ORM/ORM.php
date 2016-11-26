@@ -55,7 +55,7 @@ Class ORM {
     }
     
     foreach( get_declared_classes() as $class ){
-      if(is_subclass_of($class, 'ORM')) {
+      if(is_subclass_of($class, 'Framework\Core\ORM\ORM')) {
         $table = self::tableName($class);
         $query = Database::select('INFORMATION_SCHEMA.COLUMNS', null, null, ['TABLE_SCHEMA =' => DB_NAME, 'TABLE_NAME = ' => $table]);
         $data = $query->fetchAll(PDO::FETCH_OBJ);
@@ -229,7 +229,6 @@ Class ORM {
     $key = self::primaryKey();
 
     if (self::timestamps()) {
-      echo 'yes';
       $time = time();
       self::$_insert['created_at'] = $time;
       self::$_insert['updated_at'] = $time;

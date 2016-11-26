@@ -1,6 +1,6 @@
 <?php 
 // namespace Framework\Core\Helpers;
-use Framework\Core\HTTP\Route as Route;
+// use Framework\Core\HTTP\Route as Route;
 
 function fatalErrorShutdownHandler() {
   $last_error = error_get_last();

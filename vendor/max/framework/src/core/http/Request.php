@@ -21,7 +21,7 @@ Class Request {
 
 	// Allows accessing of keys as properties.
 	public function __get($params) {
-		if (isset($this->requestData[$params])) {
+		if (!empty($this->requestData[$params])) {
 			return $this->requestData[$params];
 		} else {
 			return null;
@@ -163,8 +163,19 @@ Class Request {
 	}
 
 	// Get all or a subset of data from the Flash>request session
-	public function old($name=null) {
-		return (!is_null($name) && isset($_SESSION['flash']['request'])) ? $_SESSION['flash']['request'][$name] : $_SESSION['flash']['request'];
+	public static function old($name=null) {
+		if (!is_null($name)) {
+			if (isset($_SESSION['flash']['request'][$name])) {
+				$session = $_SESSION['flash']['request'][$name];
+				unset($_SESSION['flash']['request'][$name]);
+				return $session;
+			} else {
+				return '';
+			}
+		} else {
+			$_SESSION['flash']['request'];
+		}
+		// return (!is_null($name) && isset($_SESSION['flash']['request'])) ? $_SESSION['flash']['request'][$name] : $_SESSION['flash']['request'];
 	}
 
 	// Removes everything from the current flashed session

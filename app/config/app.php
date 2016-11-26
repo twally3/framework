@@ -14,6 +14,7 @@ return [
 		Framework\Core\Providers\TableProvider::class,
 		Framework\Core\Providers\ValidatorProvider::class,
 		Framework\Core\Providers\ORMProvider::class,
+		Framework\Core\Providers\AuthenticationProvider::class,
 
 
 		/*
@@ -38,6 +39,7 @@ return [
 		'Schema' => Framework\Core\Support\Facades\SchemaFacade::class,
 		'Validate' => Framework\Core\Support\Facades\ValidatorFacade::class,
 		'ORM' => Framework\Core\Support\Facades\ORMFacade::class,
+		'Auth' => Framework\Core\Support\Facades\AuthenticationFacade::class,
 		'Qux' => App\Bootstrap\Facades\QuxFacade::class
 	]
 

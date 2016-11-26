@@ -26,10 +26,17 @@ class Router {
 
   public function name($name) {
     if (!array_key_exists($name, $this->_uri)) {
-      $uri = $this->_uri[count($this->_uri) - 1];
-      unset($this->_uri[count($this->_uri) - 1]);
+      $uri = end($this->_uri);
+      unset($this->_uri[key($this->_uri)]);
       $this->_uri[$name] = $uri;
     }
+    return $this;
+  }
+
+  public function middleware(Array $array) {
+    end($this->_uri);
+    $this->_uri[key($this->_uri)]['middleware'] = $array;
+
     return $this;
   }
 
@@ -137,6 +144,9 @@ class Router {
   }
 
   public function submit() {
+
+    // debugArray($this->_uri);
+    // die;
 
     if (!$this->_uri) {
       $this->noRoutes();
