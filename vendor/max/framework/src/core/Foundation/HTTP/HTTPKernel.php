@@ -27,6 +27,8 @@ Class HTTPKernel {
 
 		$this->startSessions();
 
+		// debugArray($_SESSION);
+
 		$this->loadRoutes();
 	}
 
@@ -77,10 +79,10 @@ Class HTTPKernel {
 	}
 
 	protected function runMiddleware() {
-		foreach ($this->middleware as $middleware) {
+		foreach ($this->middleware as $key => $middleware) {
 			$class = $this->routeMiddleware[$middleware];
-			$this->app->bind(strtolower($middleware), $class);
-			$class = $this->app->resolve($middleware);
+			$this->app->bind(strtolower($key), $class);
+			$class = $this->app->resolve($key);
 			$class->handle($this->request);
 			
 

@@ -56,12 +56,13 @@ class Authentication {
 	}
 
 	public function logout() {
-		session_unset();
+		unset($_SESSION['user']);
+		unset($_SESSION['token']);
 
 		setcookie('cookieAuth[user]', '', -3600, '', '', '', true);
 		setcookie('cookieAuth[authID]', '', -3600, '', '', '', true);
 
-		if (empty($_SESSION)) {
+		if (!isset($_SESSION['user'])) {
 			return (!isset($_COOKIE['cookieAuth[user]'])) ? true : false;
 		} else {
 			return false;

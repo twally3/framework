@@ -6,15 +6,16 @@ use Framework\Core\HTTP\Request;
 class AuthController extends Controller {
 
   public function index() {
-    
+    View::make('auth/home');
   }
 
-  public function dashboard() {
-  	View::make('auth/dash');
+  public function loggedin() {
+  	View::make('auth/dash', ['username' => Auth::user()->name]);
   }
 
   public function showLogin() {
     $errors = Session::single('errors');
+    // $email = Session::is_set('emailForm') ? Session::single('emailForm') : 
   	View::make('auth/login', ['oldEmail' => Request::old('email'), 'errors' => $errors]);
   }
 
@@ -22,7 +23,7 @@ class AuthController extends Controller {
 
   	$rules = [
   		'email' => 'required|max:128|email',
-  		'password' => 'required|max:128|min:8'
+  		'password' => 'required|max:128'
   	];
 
   	$validator = Validate::check($request, $rules);

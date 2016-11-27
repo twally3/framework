@@ -75,105 +75,11 @@
 		"oAP": "\/app\/Controllers\/AuthController.php",
 		"oF": 0
 		},
-	"\/app\/Controllers\/FileController.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Controllers\/FileController.php",
-		"oF": 0
-		},
-	"\/app\/Controllers\/HomeController.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Controllers\/HomeController.php",
-		"oF": 0
-		},
-	"\/app\/Controllers\/RequestController.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Controllers\/RequestController.php",
-		"oF": 0
-		},
 	"\/app\/Database\/db": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/app\/Database\/db",
 		"oF": 0
-		},
-	"\/app\/Database\/migrations\/1477425763_create_artist_table.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/migrations\/1477425763_create_artist_table.php",
-		"oF": 0
-		},
-	"\/app\/Database\/migrations\/1477426141_create_album_table.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/migrations\/1477426141_create_album_table.php",
-		"oF": 0
-		},
-	"\/app\/Database\/migrations\/1477426357_create_listener_table.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/migrations\/1477426357_create_listener_table.php",
-		"oF": 0
-		},
-	"\/app\/Database\/migrations\/1477426699_create_album_listener_table.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/migrations\/1477426699_create_album_listener_table.php",
-		"oF": 0
-		},
-	"\/app\/Database\/migrations\/1479740049_add_age_to_artists.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/migrations\/1479740049_add_age_to_artists.php",
-		"oF": 0
-		},
-	"\/app\/Database\/migrations\/1480166915_create_users_table.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/migrations\/1480166915_create_users_table.php",
-		"oF": 0
-		},
-	"\/app\/Database\/seeds\/album_listener.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/app\/Database\/seeds\/album_listener-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"\/app\/Database\/seeds\/albums.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/app\/Database\/seeds\/albums-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"\/app\/Database\/seeds\/artists.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/app\/Database\/seeds\/artists-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"\/app\/Database\/seeds\/listeners.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/app\/Database\/seeds\/listeners-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"\/app\/Database\/seeds\/users.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/app\/Database\/seeds\/users-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
 		},
 	"\/app\/http\/Kernel.php": {
 		"ft": 8192,
@@ -187,28 +93,16 @@
 		"oAP": "\/app\/http\/Middleware\/AuthMiddleware.php",
 		"oF": 0
 		},
+	"\/app\/http\/Middleware\/RedirectIfAuthenticatedMiddleware.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/app\/http\/Middleware\/RedirectIfAuthenticatedMiddleware.php",
+		"oF": 0
+		},
 	"\/app\/http\/Routes.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/app\/http\/Routes.php",
-		"oF": 0
-		},
-	"\/app\/Models\/Album.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Models\/Album.php",
-		"oF": 0
-		},
-	"\/app\/Models\/Artist.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Models\/Artist.php",
-		"oF": 0
-		},
-	"\/app\/Models\/Listener.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Models\/Listener.php",
 		"oF": 0
 		},
 	"\/app\/Models\/User.php": {
@@ -223,6 +117,12 @@
 		"oAP": "\/app\/Views\/auth\/dash.tea.php",
 		"oF": 0
 		},
+	"\/app\/Views\/auth\/home.tea.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/app\/Views\/auth\/home.tea.php",
+		"oF": 0
+		},
 	"\/app\/Views\/auth\/login.tea.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -233,54 +133,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/app\/Views\/auth\/register.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/files\/files.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/files\/files.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/files\/recieveMany.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/files\/recieveMany.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/files\/recieveOne.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/files\/recieveOne.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/home\/anchor.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/home\/anchor.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/home\/form.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/home\/form.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/home\/hello.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/home\/hello.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/Requests\/get.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/Requests\/get.tea.php",
-		"oF": 0
-		},
-	"\/app\/Views\/Requests\/post.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Views\/Requests\/post.tea.php",
 		"oF": 0
 		},
 	"\/CHANGELOG": {
@@ -340,94 +192,6 @@
 		"oAP": "\/public\/css\/template-min.css",
 		"oF": 0,
 		"oS": 0
-		},
-	"\/public\/files\/1qC4A9.jpg": {
-		"ft": 16384,
-		"iS": 1936000,
-		"oA": 0,
-		"oAP": "\/public\/files\/1qC4A9.jpg",
-		"oF": 0,
-		"opt": 1
-		},
-	"\/public\/files\/20160201_191108442_iOS.jpg": {
-		"ft": 16384,
-		"iS": 1753607,
-		"oA": 0,
-		"oAP": "\/public\/files\/20160201_191108442_iOS.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/files\/8sjFuk.jpg": {
-		"ft": 16384,
-		"iS": 1517896,
-		"oA": 0,
-		"oAP": "\/public\/files\/8sjFuk.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/files\/9TIghU.jpg": {
-		"ft": 16384,
-		"iS": 2126308,
-		"oA": 0,
-		"oAP": "\/public\/files\/9TIghU.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/files\/r76V8l.jpg": {
-		"ft": 16384,
-		"iS": 2429945,
-		"oA": 0,
-		"oAP": "\/public\/files\/r76V8l.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/files\/yEFLuu.jpg": {
-		"ft": 16384,
-		"iS": 1077627,
-		"oA": 0,
-		"oAP": "\/public\/files\/yEFLuu.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/files\/YUJSpC.jpg": {
-		"ft": 16384,
-		"iS": 2733017,
-		"oA": 0,
-		"oAP": "\/public\/files\/YUJSpC.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/files\/z9VT4g.jpg": {
-		"ft": 16384,
-		"iS": 2733017,
-		"oA": 0,
-		"oAP": "\/public\/files\/z9VT4g.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/img\/header.jpg": {
-		"ft": 16384,
-		"iS": 153948,
-		"oA": 0,
-		"oAP": "\/public\/img\/header.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/img\/header2.jpg": {
-		"ft": 16384,
-		"iS": 12005976,
-		"oA": 0,
-		"oAP": "\/public\/img\/header2.jpg",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/img\/header3.jpg": {
-		"ft": 16384,
-		"iS": 314426,
-		"oA": 0,
-		"oAP": "\/public\/img\/header3.jpg",
-		"oF": 0,
-		"opt": 0
 		},
 	"\/public\/img\/image1.png": {
 		"ft": 32768,

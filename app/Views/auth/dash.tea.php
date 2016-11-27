@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/dash.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/dash.css" media="screen" title="no title">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 </head>
@@ -24,8 +24,8 @@
             <li>
               <div class="image" href="#">
                 <div class="img-circular"></div>
-                <div class="img-text">Max Taylor</div>
-                <div class="logout"><a href="/logout">Log Out</a></div>
+                <div class="img-text">{$username}</div>
+                <div class="logout"><a href="{Route::path('logout')}">Log Out</a></div>
               </div>
             </li>
             <li>
@@ -104,7 +104,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../js/dash.js" charset="utf-8"></script>
+<script src="js/dash.js" charset="utf-8"></script>
 
 </body>
 

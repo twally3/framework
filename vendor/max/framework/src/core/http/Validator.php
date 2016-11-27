@@ -195,7 +195,7 @@ Class Validator {
 		$data = $query->fetchAll(\PDO::FETCH_OBJ);
 
 		if (!empty($data)) {
-			$this->errors[$name][] = "$name is not unique";
+			$this->errors[$name][] = "$request is taken";
 			return false;
 		}
 		return true;

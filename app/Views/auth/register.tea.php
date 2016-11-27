@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/login.css" media="screen" title="no title">
+  <link rel="stylesheet" href="css/login.css" media="screen" title="no title">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 </head>
@@ -67,7 +67,7 @@
   			    </form>
             <div class="extra">
               <a href="#">Forgot your password?</a><br>
-              <a href="#">Sign in</a>
+              <a href="{Route::path('login')}">Sign in</a>
             </div>
   			  </div>
 
