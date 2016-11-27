@@ -34,6 +34,9 @@
           -->
 
   			  <div class="panel-body">
+            @if(!empty($errors))
+              <div class="alert alert-danger" role="alert">{$errors[0]}</div>
+            @endif
             <!-- <div class="alert alert-success" role="alert">...</div> -->
   			    <form accept-charset="UTF-8" role="form" method="post" action="{Route::path('register')}">
               <fieldset>

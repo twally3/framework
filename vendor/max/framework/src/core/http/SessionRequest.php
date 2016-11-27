@@ -44,6 +44,12 @@ class SessionRequest {
     $_SESSION[$key] = $value;
   }
 
+  public function single($key) {
+    $x = $this->get($key);
+    $this->remove($key);
+    return $x;
+  }
+
   public function append($key, $value) {
     $_SESSION[$key][] = $value;
   }

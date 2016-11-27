@@ -24,7 +24,9 @@
   			 	</div>
 
   			  <div class="panel-body">
-            <!-- <div class="alert alert-success" role="alert">...</div> -->
+            @if(!empty($errors))
+              <div class="alert alert-danger" role="alert">{$errors[0]}</div>
+            @endif
   			    <form accept-charset="UTF-8" role="form" method="post" action="{Route::path('login')}">
               <fieldset>
   			    	  <div class="form-group">

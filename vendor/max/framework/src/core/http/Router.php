@@ -145,9 +145,6 @@ class Router {
 
   public function submit() {
 
-    // debugArray($this->_uri);
-    // die;
-
     if (!$this->_uri) {
       $this->noRoutes();
     }

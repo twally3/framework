@@ -14,7 +14,8 @@ class AuthController extends Controller {
   }
 
   public function showLogin() {
-  	View::make('auth/login', ['oldEmail' => Request::old('email')]);
+    $errors = Session::single('errors');
+  	View::make('auth/login', ['oldEmail' => Request::old('email'), 'errors' => $errors]);
   }
 
 	public function doLogin(Request $request) {
@@ -25,6 +26,8 @@ class AuthController extends Controller {
   	];
 
   	$validator = Validate::check($request, $rules);
+    Session::set('errors', Validate::failList());
+
   	$request->flashOnly('email');
 
   	if ($validator) {
@@ -37,6 +40,7 @@ class AuthController extends Controller {
   		if (Auth::attempt($userdata)) {
   			Route::redirect('/dashboard');
   		} else {
+        Session::set('errors', ['Email or password is incorrect']);
   			Route::redirect('/login');
   		}
 
@@ -54,7 +58,7 @@ class AuthController extends Controller {
   }
 
 	public function showRegister(Request $request) {
-  	View::make('auth/register');
+  	View::make('auth/register', ['errors' => Session::single('errors')]);
   }
 
   public function doRegister(Request $request) {
@@ -73,6 +77,7 @@ class AuthController extends Controller {
 			$this->addToUser($request);
 			redirect('/login');
 		} else {
+      Session::set('errors', Validate::failList());
 			redirect('/register');
 		}
   }
