@@ -147,12 +147,17 @@ class Tea {
   }
 
   protected function findExtend($string) {
-    $findSection = "#\@section\(\'(.*?)\'\)([^.]*?)\@endsection#";
+    // $findSection = "#\@section\(\'(.*?)\'\)([^.]*?)\@endsection#";
+    $findSection = "#\@section\(\'(.*?)\'\)((?:.|\n)*?)\@endsection#";
     $findExtend = '#\@extends\(\'(.*?)\'\)#';
     $findOutput = '#\@output\(\'(.*?)\'\)#';
     $sections = [];
 
     preg_match_all($findSection, $string, $array);
+
+    // $array = htmlspecialchars(json_encode($array));
+    // debugArray($array);
+    // die;
 
     for ($i = 0; $i < count($array[1]); $i++) {
       if (!empty($array[0][$i])) {
