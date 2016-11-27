@@ -22,7 +22,8 @@ Class Validator {
 		'required' => 'isRequired',
 		'matches' => 'doesMatch',
 		'unique' => 'isUnique',
-		'email' => 'isEmail'
+		'email' => 'isEmail',
+		'alphanumeric' => 'isAlph'
 
 	];
 
@@ -208,6 +209,13 @@ Class Validator {
 			return false;
 		}
 		return true;
+	}
+
+	public function isAlph($name) {
+		$request = $this->request->$name;
+		if (is_null($request) || ctype_alnum($request)) return true;
+		return false;
+		
 	}
 }
 
