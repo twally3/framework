@@ -315,6 +315,7 @@ Class ORM {
     $thisValue = $this->$thisField;
 
     list($one, $two) = self::sort($thisClass, $otherClass);
+
     $pivotName = is_null($pivotName) ? "{$one}_{$two}" : $pivotName;
     $pivotThis = is_null($pivotThis) ? $thisClass . "_id" : $pivotThis;
     $pivotOther = is_null($pivotOther) ? "{$otherClass}_id" : $pivotOther;
@@ -334,7 +335,7 @@ Class ORM {
 
   static function sort($one, $two) {
     $x = [$one, $two];
-    sort($x);
+    rsort($x);
     return $x;
   }
 }
