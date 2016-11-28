@@ -335,7 +335,7 @@ Class ORM {
 
   static function sort($one, $two) {
     $x = [$one, $two];
-    rsort($x);
+    nasort($x);
     return $x;
   }
 }
