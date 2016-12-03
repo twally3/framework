@@ -69,6 +69,12 @@
 		"oAP": "\/app\/config\/Database.php",
 		"oF": 0
 		},
+	"\/app\/config\/keys.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/app\/config\/keys.php",
+		"oF": 0
+		},
 	"\/app\/Controllers\/AuthController.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -477,6 +483,12 @@
 		"oAP": "\/vendor\/max\/framework\/src\/core\/providers\/FileRequestProvider.php",
 		"oF": 0
 		},
+	"\/vendor\/max\/framework\/src\/core\/providers\/JWTProvider.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/framework\/src\/core\/providers\/JWTProvider.php",
+		"oF": 0
+		},
 	"\/vendor\/max\/framework\/src\/core\/providers\/MigrationsProvider.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -555,6 +567,12 @@
 		"oAP": "\/vendor\/max\/framework\/src\/core\/security\/Authentication.php",
 		"oF": 0
 		},
+	"\/vendor\/max\/framework\/src\/core\/security\/JWT.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/framework\/src\/core\/security\/JWT.php",
+		"oF": 0
+		},
 	"\/vendor\/max\/framework\/src\/core\/support\/CommandInterface.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -577,6 +595,12 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/vendor\/max\/framework\/src\/core\/support\/Facades\/Facade.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/framework\/src\/core\/support\/Facades\/JWTFacade.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/framework\/src\/core\/support\/Facades\/JWTFacade.php",
 		"oF": 0
 		},
 	"\/vendor\/max\/framework\/src\/core\/support\/Facades\/ORMFacade.php": {

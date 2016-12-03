@@ -8,7 +8,7 @@ Class ORM {
 
   protected static $_schema = [];
 
-  protected static $_where = [];
+  public static $_where = [];
   protected static $_insert = [];
   protected static $_operators = [];
   protected static $_additional = '';
@@ -211,7 +211,12 @@ Class ORM {
     if (self::timestamps()) {
       $update['updated_at'] = time();
     }
-    return Database::update($name, $update, self::$_where);
+    $update = Database::update($name, $update, self::$_where);
+    self::$_where = [];
+    self::$_operators = [];
+    self::$_additional = '';
+
+    return $update;
   }
 
   function delete() {
@@ -221,6 +226,11 @@ Class ORM {
     $query = Database::select($name, null, null, self::$_where, $operators);
     Database::delete($name, self::$_where, $operators);
     $data = $query->fetchAll(PDO::FETCH_CLASS, $class);
+
+    self::$_where = [];
+    self::$_operators = [];
+    self::$_additional = '';
+
     return self::castClass($class, (object) $data);
   }
 
@@ -335,7 +345,7 @@ Class ORM {
 
   static function sort($one, $two) {
     $x = [$one, $two];
-    nasort($x);
+    rsort($x);
     return $x;
   }
 }

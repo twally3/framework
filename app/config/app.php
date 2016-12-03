@@ -15,6 +15,7 @@ return [
 		Framework\Core\Providers\ValidatorProvider::class,
 		Framework\Core\Providers\ORMProvider::class,
 		Framework\Core\Providers\AuthenticationProvider::class,
+		Framework\Core\Providers\JWTProvider::class,
 
 
 		/*
@@ -27,7 +28,7 @@ return [
 		/*
 		*	User Defined Service Providers
 		*/
-		App\Bootstrap\Providers\QuxProvider::class,
+		
 
 	],
 
@@ -40,7 +41,7 @@ return [
 		'Validate' => Framework\Core\Support\Facades\ValidatorFacade::class,
 		'ORM' => Framework\Core\Support\Facades\ORMFacade::class,
 		'Auth' => Framework\Core\Support\Facades\AuthenticationFacade::class,
-		'Qux' => App\Bootstrap\Facades\QuxFacade::class
+		'JWT' => Framework\Core\Support\Facades\JWTFacade::class,
 	]
 
 

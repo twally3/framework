@@ -214,6 +214,7 @@ Class Validator {
 	public function isAlph($name) {
 		$request = $this->request->$name;
 		if (is_null($request) || ctype_alnum(str_replace(' ', '', $request))) return true;
+		$this->errors[$name][] = "$name must be only contain alphanumeric characters";
 		return false;
 		
 	}

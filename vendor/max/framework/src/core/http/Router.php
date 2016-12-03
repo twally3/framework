@@ -11,18 +11,18 @@ class Router {
 
   protected $app;
 
-	protected $_prefix = null;
+  protected $_prefix = null;
   protected $_middleware = null;
 
-	protected $_uri = [];
+  protected $_uri = [];
 
   protected $_controller;
   protected $_method;
   protected $_params = [];
 
-	public function __construct(Application $app) {
+  public function __construct(Application $app) {
     $this->app = $app;
-	}
+  }
 
   public function name($name) {
     if (!array_key_exists($name, $this->_uri)) {
@@ -35,17 +35,18 @@ class Router {
 
   public function middleware(Array $array) {
     end($this->_uri);
-    $this->_uri[key($this->_uri)]['middleware'] = $array;
+    $x = $this->_uri[key($this->_uri)]['middleware'];
+    $this->_uri[key($this->_uri)]['middleware'] = array_merge($x, $array);
 
     return $this;
   }
 
-	public function get($uri, $method = null) {
+  public function get($uri, $method = null) {
     if ($method != null) {
       $this->_uri[] = $this->buildURI($uri, $method, 'get');
       return $this;
     }
-	}
+  }
 
   public function post($uri, $method = null) {
     if ($method != null) {
@@ -68,7 +69,7 @@ class Router {
     }
   }
 
-	public function buildURI($uri, $method, $rtype) {
+  public function buildURI($uri, $method, $rtype) {
     $uri = is_null($this->_prefix) ? $uri : $this->_prefix . $uri;
 
     return ['original' => $uri,
@@ -76,9 +77,9 @@ class Router {
             'method' => $method,
             'rtype' => $rtype,
             'middleware' => $this->_middleware];
-	}
+  }
 
-	public function reg_replace($uri) {
+  public function reg_replace($uri) {
     return "#^" . preg_replace("#\/\??\{[A-Za-z0-9\_\-]+\}#", "(?:\/([A-Za-z0-9\-\_]+))", "/" . trim($uri, "/")) . "$#";
   }
 
