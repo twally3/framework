@@ -6,16 +6,37 @@ use Framework\Core\Foundation\Application;
 
 class Tea {
 
+  /**
+   * The application container
+   * @var Framework\Core\Foundation\Application
+   */
   protected $app;
 
+
+  /**
+   * The file extention
+   * @var string
+   */
   protected $extension = '.tea.php';
 
+
+  /**
+   * Bind dependencies
+   * @param Application $app The application container
+   */
   public function __construct(Application $app) {
     $this->app = $app;
   }
 
+
+  /**
+   * Compile the view
+   * @param  string $view The name of the view
+   * @param  array  $data The Assoc list of data
+   * @return void
+   */
   public function make($view, $data = []) {
-    $string = file_get_contents($this->app->basepath . '/app/views/' . $view . $this->extension);
+    $string = file_get_contents($this->app->basepath . '/App/Views/' . $view . $this->extension);
 
     foreach ($data as $x => $y) {
       if (isset($$x)) {
@@ -31,11 +52,7 @@ class Tea {
     $string = $this->loops($string);
     $string = $this->addVars($string);
 
-    // echo '<pre>';
-    // echo htmlentities($string);
-    // die;
-
-    $tmpfname = tempnam($this->app->basepath . "/app/views/tmp", "fakeEval");
+    $tmpfname = tempnam($this->app->basepath . "/App/Views/tmp", "fakeEval");
     $handle = fopen($tmpfname, "w+");
     fwrite($handle, $string);
     fclose($handle);
@@ -43,6 +60,12 @@ class Tea {
     unlink($tmpfname);
   }
 
+
+  /**
+   * Find all the loops
+   * @param  string $string The current state of the view
+   * @return string         The state of the view with loops
+   */
   protected function loops($string) {
     $string = $this->forLoop($string);
     $string = $this->for_each($string);
@@ -52,6 +75,12 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Find the loop break points
+   * @param  string $string The current state of the view
+   * @return string         The view with loops
+   */
   protected function breaks($string) {
     $find = '#\@break#';
     $replace = '<? break; ?>';
@@ -60,6 +89,12 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Load foreach loops
+   * @param  string $string The current state of the view
+   * @return string         The view with foreach loops
+   */
   protected function for_each($string) {
     $find = [
       '#\@foreach\s?\((.*?)\sas\s(.*?)\)\n#',
@@ -73,6 +108,12 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Load for loops
+   * @param  string $string The current state of the view
+   * @return string         The view will for loops
+   */
   protected function forLoop($string) {
     $find = [
       '#\@for\s?\((.*?)\)\n#',
@@ -88,6 +129,12 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Load conditional statements
+   * @param  string $string The current state of the view
+   * @return string         The view with conditionals
+   */
   protected function conditionals($string) {
     $find = [
       '#\@if\s?((.*?)\n)#',
@@ -106,6 +153,12 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Add variables to view
+   * @param string $string The current state of the view
+   * @param string  $data  The view with variables
+   */
   protected function addVars($string, $data = []) {
     $find = [
       '#\{\$(.*?)\}#',
@@ -124,6 +177,12 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Find @include
+   * @param  string $string The current state of the view
+   * @return string         The view with files included
+   */
   protected function findInclude($string) {
     $find = '#\@include(?:\(\'(.+?)\'\))?#';
 
@@ -140,24 +199,33 @@ class Tea {
     return $string;
   }
 
+
+  /**
+   * Include the new view at @include
+   * @param  array $matches The REGEX match
+   * @return string         The view with the included file
+   */
   protected function include_file($matches) {
     $file = implode('/', explode('.', $matches[1]));
-    $string = file_get_contents($this->app->basepath . '/app/views/' . $file . $this->extension);
+    $string = file_get_contents($this->app->basepath . '/App/Views/' . $file . $this->extension);
     return $string;
   }
 
+
+  /**
+   * Find all @extends
+   * @param  string $string The current state of the view
+   * @return string         The view with extension
+   */
   protected function findExtend($string) {
     // $findSection = "#\@section\(\'(.*?)\'\)([^.]*?)\@endsection#";
-    $findSection = "#\@section\(\'(.*?)\'\)((?:.|\n)*?)\@endsection#";
+    $findSection = "/\@section\(\'(.*?)\'\)(.*?)\@endsection/s";
     $findExtend = '#\@extends\(\'(.*?)\'\)#';
     $findOutput = '#\@output\(\'(.*?)\'\)#';
     $sections = [];
 
+    // dd($string);
     preg_match_all($findSection, $string, $array);
-
-    // $array = htmlspecialchars(json_encode($array));
-    // debugArray($array);
-    // die;
 
     for ($i = 0; $i < count($array[1]); $i++) {
       if (!empty($array[0][$i])) {
@@ -181,14 +249,27 @@ class Tea {
     return $new_string;
   }
 
+
+  /**
+   * Finds @output in files
+   * @param  array $matches The Regex Match
+   * @return mixed          The found section or empty string
+   */
   protected function output($matches) {
     return (isset($this->sections[$matches[1]])) ? $this->sections[$matches[1]] : '';
   }
 
+
+  /**
+   * Include the extend file
+   * @param  array  $extends The extend matches
+   * @param  string $string  The current state of the view
+   * @return string          The view with extension
+   */
   protected function extend($extends, $string) {
     if (!empty($extends[0])) {
       $file = implode('/', explode('.', $extends[1]));
-      $new_string = file_get_contents($this->app->basepath . '/app/views/' . $file . $this->extension);
+      $new_string = file_get_contents($this->app->basepath . '/App/Views/' . $file . $this->extension);
       return $new_string;
     }
     return $string;

@@ -1,11 +1,12 @@
 {
 	"autoload": {
 		"namespace": {
-			"Framework\\": "/vendor/max/Framework/src"
+			"Framework\\": "/vendor/max/Framework/src",
+			"Braintree\\": "/App/Bootstrap/Includes/braintree-php-3.19.0/lib/Braintree"
 		},
 		"files": [
-			"/app/bootstrap/helpers.php",
-			"/app/config/Database.php"
+			"/App/Bootstrap/helpers.php",
+			"/App/Config/Database.php"
 		]
 	}
 }

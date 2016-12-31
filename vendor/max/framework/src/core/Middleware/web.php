@@ -9,6 +9,11 @@ use \Route;
 
 Class Web implements MiddlewareInterface {
 
+	/**
+	 * Checks if the CSRF token is set in a get request
+	 * @param  Request $request Request object
+	 * @return void
+	 */
 	public function handle(Request $request) {
 		if ($request->_token != Session::get('csrf_token')) {
 			Route::redirect('/');

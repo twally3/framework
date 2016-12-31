@@ -6,7 +6,16 @@ use Framework\Core\HTTP\Request;
 
 Class Validator {
 
+	/**
+	 * The list of errors that have occured
+	 * @var array
+	 */
 	protected $errors = [];
+
+	/**
+	 * Validation types
+	 * @var array
+	 */
 	protected $keywords = [
 
 		// 'unique' => 'unique',
@@ -27,6 +36,13 @@ Class Validator {
 
 	];
 
+	/**
+	 * Check the request against the rules
+	 * @param  Request      $request The Request object
+	 * @param  array        $array   The Rules array
+	 * @param  Boolean|null $fast    Quit on the first error
+	 * @return boolean               Did the rules match
+	 */
 	public function check(Request $request, array $array, Boolean $fast = null) {
 		$this->request = $request;
 		$this->errors = [];
@@ -50,18 +66,30 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * The raw errors array
+	 * @return array The list of errors
+	 */
 	public function fails() {
 		return $this->errors;
 	}
 
+
+	/**
+	 * The list of fails
+	 * @return array The fail list
+	 */
 	public function failList() {
 		return array_reduce($this->errors, 'array_merge', array());
 	}
 
-	// public function unique($name) {
-		
-	// }
 
+	/**
+	 * Checks a value doesnt have a length greater than max
+	 * @param  string $name Name of property
+	 * @return boolean      Success
+	 */
 	public function max($name) {
 		if (is_null($this->param)) {
 			throw new \Exception("Parameter is not set for Max");
@@ -78,6 +106,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks a value isnt shorter than
+	 * @param  string $name Reference name
+	 * @return Boolean      Success
+	 */
 	public function min($name) {
 		if (is_null($this->param)) {
 			throw new \Exception("Parameter is not set for Min");
@@ -94,6 +128,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if a value is a bool
+	 * @param  string  $name The reference name
+	 * @return boolean       Success
+	 */
 	public function isBoolean($name) {
 		if (!is_bool($this->request->$name)) {
 			$this->errors[$name][] = "Entered value for $name must be a boolean";
@@ -102,6 +142,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if a value is an integer
+	 * @param  string  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isInteger($name) {
 		if (!is_int($this->request->$name)) {
 			$this->errors[$name][] = "$name must be a number";
@@ -110,6 +156,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if the value is a string
+	 * @param  string  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isString($name) {
 		if (!is_string($this->request->$name)) {
 			$this->errors[$name][] = "$name must be a string";
@@ -118,6 +170,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if a values is null
+	 * @param  string  $name Reference Name
+	 * @return boolean       Success
+	 */
 	public function isNull($name) {
 		if (!is_null($this->request->$name)) {
 			$this->errors[$name][] = "$name must be null";
@@ -126,6 +184,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if a date is before a given time
+	 * @param  string  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isBefore($name) {
 		if (is_null($this->param)) {
 			throw new \Exception("Parameter is not set for before");
@@ -139,6 +203,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if a date is after
+	 * @param  string  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isAfter($name) {
 		if (is_null($this->param)) {
 			throw new \Exception("Parameter is not set for after");
@@ -152,6 +222,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks a value is true
+	 * @param  String  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isAccepted($name) {
 		if (!is_bool($this->request->$name)) {
 			throw new \Exception("$name is not a boolean value");
@@ -164,6 +240,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks a value is not empty
+	 * @param  string  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isRequired($name) {
 		// echo $this->request->$name;
 		// die;
@@ -174,6 +256,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if two properties match
+	 * @param  string $name Reference name
+	 * @return Boolean      Success
+	 */
 	public function doesMatch($name) {
 		$param = $this->param;
 		if (is_null($this->request->$name)) {
@@ -187,6 +275,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Checks if a value is unique in DB
+	 * @param  string  $name Reference name
+	 * @return boolean       Success
+	 */
 	public function isUnique($name) {
 		$request = $this->request->$name;
 		$param = $this->param;
@@ -203,6 +297,12 @@ Class Validator {
 
 	}
 
+
+	/**
+	 * Checks if the prop is an email
+	 * @param  string  $name Reference Name
+	 * @return boolean       Success
+	 */
 	public function isEmail($name) {
 		if (!filter_var($this->request->$name, FILTER_VALIDATE_EMAIL)) {
 			$this->errors[$name][] = "$name must be a valid email address";
@@ -211,6 +311,12 @@ Class Validator {
 		return true;
 	}
 
+
+	/**
+	 * Only allows alphanumeric chars
+	 * @param  string  $name Reference Name
+	 * @return boolean       Success
+	 */
 	public function isAlph($name) {
 		$request = $this->request->$name;
 		if (is_null($request) || ctype_alnum(str_replace(' ', '', $request))) return true;

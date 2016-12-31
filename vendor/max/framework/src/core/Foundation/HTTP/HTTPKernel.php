@@ -11,27 +11,64 @@ use ReflectionMethod;
 
 Class HTTPKernel {
 
-	protected $config;
+	/**
+	 * The application container
+	 * @var Application
+	 */
 	protected $app;
+
+	/**
+	 * The router instance
+	 * @var Router
+	 */
 	protected $router;
 
+
+	/**
+	 * The controller method
+	 * @var array
+	 */
 	protected $method;
+
+	/**
+	 * The additional args for the method
+	 * @var array
+	 */
 	protected $args;
+
+	/**
+	 * The required middleware
+	 * @var null
+	 */
 	protected $middleware = null;
 
+
+	/**
+	 * The request instance
+	 * @var Request
+	 */
 	protected $request;
 
+
+	/**
+	 * Bind the dependencies and start the session and load the routes
+	 * @param Application $app    The application container
+	 * @param Router      $router The router instance
+	 */
 	public function __construct(Application $app, Router $router) {
 		$this->app = $app;
 		$this->router = $router;
 
 		$this->startSessions();
-
-		// debugArray($_SESSION);
-
 		$this->loadRoutes();
 	}
 
+
+	/**
+	 * Runs the HTTP Kernal
+	 * @param  Request $request Passed the current request object
+	 * @return string           Currently only returns the word response
+	 */
 	public function handle(Request $request) {
 		$this->request = $request;
 		
@@ -47,6 +84,13 @@ Class HTTPKernel {
 		return 'response';
 	}
 
+
+	/**
+	 * Checks to see if the method on the controller requires the reqeust object
+	 * @param  array  $method The method being requested
+	 * @param  array  $args   The args to pass to the method
+	 * @return void
+	 */
 	protected function requiresRequest($method, $args) {
 		$reflector;
 
@@ -64,12 +108,22 @@ Class HTTPKernel {
 	    }
 	}
 
+
+	/**
+	 * Loads the routes file
+	 * @return void
+	 */
 	protected function loadRoutes() {
-		require_once $this->app->basepath . '/app/http/routes.php';
+		require_once $this->app->basepath . '/App/HTTP/Routes.php';
 	}
 
+
+	/**
+	 * Loads the session and starts them
+	 * @return void
+	 */
 	protected function startSessions() {
-		$sessions = require_once $this->app->basepath . '/app/bootstrap/sessions.php';
+		$sessions = require_once $this->app->basepath . '/App/Bootstrap/sessions.php';
 
 		foreach ($sessions as $key => $session) {
 			if (!isset($_SESSION[$key])) {
@@ -78,16 +132,17 @@ Class HTTPKernel {
 		}
 	}
 
+
+	/**
+	 * Runs the required middleware
+	 * @return void
+	 */
 	protected function runMiddleware() {
 		foreach ($this->middleware as $key => $middleware) {
 			$class = $this->routeMiddleware[$middleware];
 			$this->app->bind(strtolower($key), $class);
 			$class = $this->app->resolve($key);
 			$class->handle($this->request);
-			
-
-			// print_r($class);
-			// $class->handle($this->request);
 		}
 	}
 }
