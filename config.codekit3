@@ -9,6 +9,12 @@
 	],
 "creatorBuild": "25479",
 "files": {
+	"\/.htaccess": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.htaccess",
+		"oF": 0
+		},
 	"\/app\/.htaccess": {
 		"ft": 8192,
 		"oA": 2,
@@ -85,6 +91,12 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/app\/Database\/db",
+		"oF": 0
+		},
+	"\/App\/Database\/migrations\/1480166915_create_users_table.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/App\/Database\/migrations\/1480166915_create_users_table.php",
 		"oF": 0
 		},
 	"\/app\/http\/Kernel.php": {
