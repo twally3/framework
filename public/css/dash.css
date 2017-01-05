@@ -1,0 +1,154 @@
+body {
+  overflow-x: hidden;
+  font: 400 15px Lato, sans-serif;
+  line-height: 1.8;
+  color: black; }
+
+/* Toggle Styles */
+.header-btn {
+  margin: 5px;
+  margin-top: -5px; }
+
+.btn-static {
+  display: none; }
+
+.right {
+  float: right; }
+
+h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #303030;
+  font-weight: 600; }
+
+h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  color: #303030;
+  font-weight: 400;
+  margin-bottom: 30px; }
+
+h2.inline {
+  display: inline; }
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+  #wrapper.toggled {
+    padding-left: 250px; }
+
+#sidebar-wrapper {
+  z-index: 9999;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #3498db;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px; }
+
+#page-content-wrapper {
+  width: 100%;
+  position: fixed;
+  padding: 15px; }
+
+#wrapper.toggled #page-content-wrapper {
+  position: fixed;
+  margin-right: -250px; }
+
+/* Sidebar Styles */
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px !important;
+  letter-spacing: 2px;
+  font-family: Montserrat, sans-serif; }
+  .sidebar-nav li {
+    text-indent: 20px;
+    line-height: 50px; }
+    .sidebar-nav li a, .sidebar-nav li a.link, .sidebar-nav li div.image {
+      text-decoration: none; }
+    .sidebar-nav li a.link, .sidebar-nav li div.image {
+      display: block;
+      color: white; }
+      .sidebar-nav li a.link span, .sidebar-nav li div.image span {
+        font-size: 20px;
+        vertical-align: text-bottom;
+        margin-left: -20px;
+        padding-right: 5px; }
+      .sidebar-nav li a.link.active, .sidebar-nav li div.active.image {
+        color: #3498db;
+        background: white; }
+      .sidebar-nav li a.link:hover, .sidebar-nav li div.image:hover {
+        color: #3498db;
+        background: white; }
+    .sidebar-nav li div.image {
+      cursor: default; }
+      .sidebar-nav li div.image .img-circular {
+        width: 100px;
+        height: 100px;
+        background-image: url("../img/new-york.jpg");
+        background-size: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%; }
+      .sidebar-nav li div.image .img-text {
+        text-align: center;
+        text-indent: 0;
+        font-size: 16px; }
+      .sidebar-nav li div.image .logout {
+        text-align: center;
+        text-indent: 0;
+        margin-top: -15px;
+        line-height: 40px; }
+        .sidebar-nav li div.image .logout > a, .sidebar-nav li div.image .logout > div.image {
+          color: #fff !important; }
+          .sidebar-nav li div.image .logout > a:hover, .sidebar-nav li div.image .logout > div.image:hover {
+            text-decoration: underline; }
+      .sidebar-nav li div.image:hover {
+        text-decoration: none;
+        color: white;
+        background: #3498db; }
+  .sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px; }
+    .sidebar-nav > .sidebar-brand a, .sidebar-nav > .sidebar-brand li a.link, .sidebar-nav > .sidebar-brand li div.image {
+      color: white; }
+      .sidebar-nav > .sidebar-brand a:hover, .sidebar-nav > .sidebar-brand li div.image:hover {
+        color: #fff;
+        background: none; }
+
+@media (min-width: 768px) {
+  #menu-toggle {
+    display: none; }
+  .btn-static {
+    display: inline-block;
+    margin: 5px;
+    margin-top: -5px; }
+  #wrapper {
+    padding-left: 250px; }
+    #wrapper.toggled {
+      padding-left: 0; }
+  #sidebar-wrapper {
+    width: 250px; }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0; }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative; }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0; } }
