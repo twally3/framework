@@ -168,7 +168,7 @@ class Database {
   public function prep_values($data, $type='insert') {
     $fields = '';
     $placeholders = '';
-    $values = array();
+    $values = [];
 
     foreach ($data as $field => $value) {
       $fields .= "{$field},";
@@ -198,7 +198,7 @@ class Database {
    */
   public function prep_where($where, $operators) {
     $where_clause = '';
-    $where_values = '';
+    $where_values = [];
     $count = 0;
 
 
