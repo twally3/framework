@@ -49,15 +49,24 @@ Class HTTPKernel {
 	 */
 	protected $request;
 
+	protected $shouldLoadRoutes;
+
 
 	/**
 	 * Bind the dependencies and start the session and load the routes
 	 * @param Application $app    The application container
 	 * @param Router      $router The router instance
 	 */
-	public function __construct(Application $app, Router $router) {
+	public function __construct(Application $app, Router $router, $sessions = null, $routes = true) {
 		$this->app = $app;
 		$this->router = $router;
+		$this->shouldLoadRoutes = $routes;
+
+		if (!is_null($sessions)) {
+			$this->sessions = $sessions;
+		} else {
+			$this->sessions = require_once $this->app->basepath . '/App/Bootstrap/sessions.php';
+		}
 
 		$this->startSessions();
 		$this->loadRoutes();
@@ -71,7 +80,6 @@ Class HTTPKernel {
 	 */
 	public function handle(Request $request) {
 		$this->request = $request;
-		
 		list($this->method, $this->args, $this->middleware) = $this->router->submit();
 
 		if ($this->middleware) {
@@ -114,7 +122,9 @@ Class HTTPKernel {
 	 * @return void
 	 */
 	protected function loadRoutes() {
-		require_once $this->app->basepath . '/App/HTTP/Routes.php';
+		if ($this->shouldLoadRoutes) {
+			require_once $this->app->basepath . '/App/HTTP/Routes.php';
+		}
 	}
 
 
@@ -123,7 +133,7 @@ Class HTTPKernel {
 	 * @return void
 	 */
 	protected function startSessions() {
-		$sessions = require_once $this->app->basepath . '/App/Bootstrap/sessions.php';
+		$sessions = $this->sessions;
 
 		foreach ($sessions as $key => $session) {
 			if (!isset($_SESSION[$key])) {
