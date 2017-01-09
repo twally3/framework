@@ -24,7 +24,7 @@ Class Application extends Container {
 	 * Sets up the application
 	 * @param String $basepath The base path of the application
 	 */
-	public function __construct($basepath = null) {
+	public function __construct($basepath = null, $appconf = null) {
 		// set_exception_handler([$this, 'exception']);
 		// set_error_handler([$this, 'error']);
 
@@ -32,7 +32,11 @@ Class Application extends Container {
 			$this->basepath = $basepath;
 		}
 		
-		$this->app = require __DIR__ . '/../../../../../../App/Config/app.php';
+		if (!is_null($appconf)) {
+			$this->app = $appconf;
+		} else {
+			$this->app = require __DIR__ . '/../../../../../../App/Config/app.php';
+		}
 
 		$this->baseBindings();
 		$this->loadProviders();
@@ -48,7 +52,7 @@ Class Application extends Container {
 	 * Loads all the registered providers
 	 * @return void
 	 */
-	public function loadProviders() {
+	protected function loadProviders() {
 		$app = $this->app;
 
 		foreach ($app['providers'] as $provider) {
@@ -61,7 +65,7 @@ Class Application extends Container {
 	 * Add the current app instance to the container
 	 * @return void
 	 */
-	public function baseBindings() {
+	protected function baseBindings() {
 		// Add current app instance to the container
 		$this->addExistingSingleton('application', $this);
 	}
@@ -71,7 +75,7 @@ Class Application extends Container {
 	 * Load all registered facades
 	 * @return void
 	 */
-	public function addFacades() {
+	protected function addFacades() {
 		$app = $this->app;
 
 		foreach ($app['aliases'] as $key => $alias) {
@@ -85,7 +89,7 @@ Class Application extends Container {
 	 * Runs the boot method on the loaded providers
 	 * @return void
 	 */
-	public function bootProviders() {
+	protected function bootProviders() {
 		$app = $this->app;
 
 		foreach ($this->loadedProviders as $provider) {
@@ -120,78 +124,5 @@ Class Application extends Container {
 	 */
 	public function providerHasBeenLoaded(ServiceProviderInterface $provider) {
 		return array_key_exists(get_class($provider), $this->loadedProviders);
-	}
-
-
-	/**
-	 * Catch and display the exception
-	 * @param  [type] $e [description]
-	 * @return [type]    [description]
-	 */
-	public function exception($e) {
-		$last_error = error_get_last();
-	  if ($last_error['type'] === E_ERROR) {
-	    // fatal error
-	    error(E_ERROR, $last_error['message'], $last_error['file'], $last_error['line']);
-	  } else {
-			$message = $e->getMessage();
-			$line = $e->getLine();
-			$file = $e->getFile();
-			include __DIR__ . '/../Render/error.php';
-			echo "<h3>";
-			echo $message . '<span class="line"> on line ' . $line . '</span>';
-			echo '<br><span class="file">' . $file . '</span>';
-			echo "</h3>";
-			echo $this->getStackTrace($e);
-	  }
-	}
-
-	/**
-	 * Catch Errors
-	 * @param  string $num  The error number
-	 * @param  string $msg  The error message
-	 * @param  string $file The error file
-	 * @param  string $line The error line
-	 * @return void
-	 */
-	public function error($num, $msg, $file, $line) {
-		$error = $msg. '<br>File: '. $file. '<br>Line: '. $line;
-		$this->exception(new \Exception($error));
-		die;
-	}
-
-	/**
-	 * Gets the stack trace and renders
-	 * @param  Exception $e The exception
-	 * @return string       The HTML ready stack trace
-	 */
-	public function getStackTrace($e) {
-		$trace = explode("\n", $e->getTraceAsString());
-	    // reverse array to make steps line up chronologically
-	    $trace = array_reverse($trace);
-	    array_shift($trace); // remove {main}
-	    array_pop($trace); // remove call to this method
-	    $length = count($trace);
-	    $result = array();
-	    
-	    for ($i = 0; $i < $length; $i++) {
-	        // $result[] = substr($trace[$i], strpos($trace[$i], ' ')); // replace '#someNum' with '$i)', set the right ordering
-	        $str = substr($trace[$i], strpos($trace[$i], ' '));
-	        preg_match("#\((.*?)\):#", $str, $line);
-	        preg_match("#\/(.*?)\.php#", $str, $file);
-	        $name = explode('\\', $str);
-	        $name = array_pop($name);
-	        $file = explode('/', $file[1]);
-	        $file = array_pop($file) . '.php';
-
-	        $final = $name . '<span class="line"> in ' . $file . ' line ' . $line[1] . '</span>';
-	        $result[] = $final;
-	        // debugArray($final);
-	    }
-
-	    // die;
-	    
-	    return $final = "<ol><li>" . implode("</li><li>", $result) . '</li>';
-    // preg_replace()
 	}
 }

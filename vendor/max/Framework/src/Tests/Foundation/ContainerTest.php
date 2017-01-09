@@ -27,13 +27,13 @@ Class ContainerTest extends PHPUnit_Framework_Testcase {
 
 	public function testisSingletonReturnsTrueIfExists() {
 		$this->container->singleton('foo', 'Bar');
-		$this->assertEquals(true, $this->container->isSingleton('foo'));
+		$this->assertTrue($this->container->isSingleton('foo'));
 	}
 
 	public function testSingletonResolvedReturnsTrue() {
 		$this->container->singleton('foo', 'Bar');
 		$this->container->resolve('foo');
-		$this->assertEquals(true, $this->container->singletonResolved('foo'));
+		$this->assertTrue($this->container->singletonResolved('foo'));
 	}
 
 	public function testGetSingletonInstanceReturnsKey() {
