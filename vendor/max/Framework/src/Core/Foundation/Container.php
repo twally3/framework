@@ -185,7 +185,7 @@ class Container implements ArrayAccess {
 	 * @param  string $class        The class name
 	 * @return array                The arguements to pass
 	 */
-	public function buildDependencies($args, $dependencies, $class) {
+	protected function buildDependencies($args, $dependencies, $class) {
 		$classArgs = [];
 
 		foreach ($dependencies as $dependency) {
