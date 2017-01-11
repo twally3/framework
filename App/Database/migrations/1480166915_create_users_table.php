@@ -14,7 +14,6 @@ class create_users_table implements MigrationsInterface {
       $t->int('id')->incriment()->notNull()->primary();
 
       $t->varchar('name', 128);
-      $t->varchar('username', 128);
       $t->varchar('email', 128);
       $t->varchar('password', 256);
 

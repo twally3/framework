@@ -123,16 +123,10 @@
 		"oAP": "\/App\/Models\/User.php",
 		"oF": 0
 		},
-	"\/App\/Views\/auth\/dash.tea.php": {
+	"\/App\/Views\/auth\/index.tea.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/App\/Views\/auth\/dash.tea.php",
-		"oF": 0
-		},
-	"\/App\/Views\/auth\/home.tea.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/App\/Views\/auth\/home.tea.php",
+		"oAP": "\/App\/Views\/auth\/index.tea.php",
 		"oF": 0
 		},
 	"\/App\/Views\/auth\/login.tea.php": {
@@ -141,10 +135,22 @@
 		"oAP": "\/App\/Views\/auth\/login.tea.php",
 		"oF": 0
 		},
+	"\/App\/Views\/auth\/nav.tea.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/App\/Views\/auth\/nav.tea.php",
+		"oF": 0
+		},
 	"\/App\/Views\/auth\/register.tea.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/App\/Views\/auth\/register.tea.php",
+		"oF": 0
+		},
+	"\/App\/Views\/auth\/template.tea.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/App\/Views\/auth\/template.tea.php",
 		"oF": 0
 		},
 	"\/CHANGELOG": {
@@ -164,46 +170,6 @@
 		"oA": 2,
 		"oAP": "\/public\/.htaccess",
 		"oF": 0
-		},
-	"\/public\/css\/dash.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/public\/css\/dash-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/public\/css\/login.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/public\/css\/login-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/public\/css\/style.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/public\/css\/style-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/public\/css\/template.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/public\/css\/template-min.css",
-		"oF": 0,
-		"oS": 0
 		},
 	"\/public\/img\/image1.png": {
 		"ft": 32768,
@@ -248,46 +214,6 @@
 		"oA": 2,
 		"oAP": "\/public\/init.php",
 		"oF": 0
-		},
-	"\/public\/js\/app.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/public\/js\/app-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/public\/js\/dash.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/public\/js\/dash-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/public\/js\/template.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/public\/js\/template-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/public\/sass\/dash.sass": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 2,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/public\/css\/dash.css",
-		"oF": 2,
-		"oS": 0,
-		"uL": 1
 		},
 	"\/README.md": {
 		"cS": 0,

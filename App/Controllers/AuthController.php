@@ -6,17 +6,19 @@ use Framework\Core\HTTP\Request;
 class AuthController extends Controller {
 
   public function index() {
-    View::make('auth/home');
+    View::make('auth/index');
+  }
+
+  public function showLogin() {
+    View::make('auth/login', ['errors' => Session::single('errors')]);
+  }
+
+  public function showRegister() {
+    View::make('auth/register', ['errors' => Session::single('errors')]);
   }
 
   public function loggedin() {
   	View::make('auth/dash', ['username' => Auth::user()->name]);
-  }
-
-  public function showLogin() {
-    $errors = Session::single('errors');
-    // $email = Session::is_set('emailForm') ? Session::single('emailForm') : 
-  	View::make('auth/login', ['oldEmail' => Request::old('email'), 'errors' => $errors]);
   }
 
 	public function doLogin(Request $request) {
@@ -39,7 +41,7 @@ class AuthController extends Controller {
   		];
 
   		if (Auth::attempt($userdata)) {
-  			Route::redirect('/dashboard');
+  			Route::redirect('/');
   		} else {
         Session::set('errors', ['Email or password is incorrect']);
   			Route::redirect('/login');
@@ -58,20 +60,14 @@ class AuthController extends Controller {
   	}
   }
 
-	public function showRegister(Request $request) {
-  	View::make('auth/register', ['errors' => Session::single('errors')]);
-  }
-
   public function doRegister(Request $request) {
 
 		$rules = [
-			'uname' => 'required|max:40|unique:users,username',
-			'fname' => 'required|max:60',
-			'lname' => 'required|max:60',
-			'email' => 'required|max:128|email|matches:cemail|unique:users,email',
-			'cemail' => 'required|max:128|email',
-			'password' => 'required|max:128|min:8|matches:cpassword',
-			'cpassword' => 'required|max:128|min:8'
+			'name' => 'required|max:127',
+			'email' => 'required|max:128|email|matches:email2|unique:users,email',
+			'email2' => 'required|max:128|email',
+			'password' => 'required|max:128|min:8|matches:password2',
+			'password2' => 'required|max:128|min:8'
 		];
 
 		if (Validate::check($request, $rules)) {
@@ -87,7 +83,6 @@ class AuthController extends Controller {
   	$user = new User;
 
 		$user->name = $request->fname . ' ' . $request->lname;
-		$user->username = $request->uname;
 		$user->email = $request->email;
 		$user->password = Auth::hash($request->password);
 
