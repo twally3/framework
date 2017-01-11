@@ -9,6 +9,12 @@
 	],
 "creatorBuild": "25479",
 "files": {
+	"\/.gitignore": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.gitignore",
+		"oF": 0
+		},
 	"\/App\/.htaccess": {
 		"ft": 8192,
 		"oA": 2,
