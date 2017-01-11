@@ -196,20 +196,7 @@ class Container implements ArrayAccess {
 
 			if ($class === null) continue;
 
-			// if (get_class($this) === $class->name) {
-			// 	array_unshift($args, $this);
-			// 	continue;
-			// }
-
-			foreach ($this->bindings as $key => $value) {
-				if ($value['value'] == $class->name) {
-					$name = $key;
-					break;
-				}
-			}
-
-			// $name = explode('\\', $class->name);
-			// $name = strtolower(array_pop($name));
+			$name = $this->getKeyFromVal($class->name);
 
 			$classArgs[] = $this->resolve($name);
 		}
@@ -220,6 +207,16 @@ class Container implements ArrayAccess {
 			array_unshift($args, $classArg);
 		}
 		return $args;
+	}
+
+	public function getKeyFromVal($name) {
+		foreach ($this->bindings as $key => $value) {
+			if ($value['value'] == $name) {
+				return $name = $key;
+				break;
+			}
+		}
+		throw new DependencyDoesNotExistException("Class {$name} is not a resolvable dependency");
 	}
 
 	// For accessing the $bindings array with array access.

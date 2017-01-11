@@ -109,8 +109,30 @@ Class HTTPKernel {
     }
 
     $dependencies = $reflector->getParameters();
-    $class = isset($dependencies[0]) ? $dependencies[0]->getClass() : null;
-    
+    $arguments = [];
+
+    foreach ($dependencies as $dependency) {
+    	$class = $dependency->getClass();
+
+    	if (!is_null($class)) {
+    		$binding = $this->app->getKeyFromVal($class->name);
+    		$final = $this->app->resolve($binding);
+    		$arguments[] = $final;
+    	} else {
+    		$arguments[] = null;
+    	}
+    }
+
+    $counter = 0;
+    foreach ($arguments as $key => $a) {
+    	if ($a == null) {
+    		$arguments[$key] = $this->args[$counter] ?: null;
+    		$counter++;
+    	}
+    }
+
+    $this->args = $arguments;
+
     if (isset($class->name) && ($class->name == 'Framework\Core\HTTP\Request')) {
       array_unshift($this->args, $this->request);
     }

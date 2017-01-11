@@ -9,88 +9,82 @@
 	],
 "creatorBuild": "25479",
 "files": {
-	"\/.htaccess": {
+	"\/App\/.htaccess": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/.htaccess",
+		"oAP": "\/App\/.htaccess",
 		"oF": 0
 		},
-	"\/app\/.htaccess": {
+	"\/App\/Bootstrap\/app.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/.htaccess",
+		"oAP": "\/App\/Bootstrap\/app.php",
 		"oF": 0
 		},
-	"\/app\/bootstrap\/app.php": {
+	"\/App\/Bootstrap\/Facades\/QuxFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/bootstrap\/app.php",
+		"oAP": "\/App\/Bootstrap\/Facades\/QuxFacade.php",
 		"oF": 0
 		},
-	"\/app\/bootstrap\/Facades\/QuxFacade.php": {
+	"\/App\/Bootstrap\/helpers.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/bootstrap\/Facades\/QuxFacade.php",
+		"oAP": "\/App\/Bootstrap\/helpers.php",
 		"oF": 0
 		},
-	"\/app\/bootstrap\/helpers.php": {
+	"\/App\/Bootstrap\/Includes\/Qux.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/bootstrap\/helpers.php",
+		"oAP": "\/App\/Bootstrap\/Includes\/Qux.php",
 		"oF": 0
 		},
-	"\/app\/bootstrap\/Includes\/Qux.php": {
+	"\/App\/Bootstrap\/Providers\/QuxProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/bootstrap\/Includes\/Qux.php",
+		"oAP": "\/App\/Bootstrap\/Providers\/QuxProvider.php",
 		"oF": 0
 		},
-	"\/app\/bootstrap\/Providers\/QuxProvider.php": {
+	"\/App\/Bootstrap\/sessions.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/bootstrap\/Providers\/QuxProvider.php",
+		"oAP": "\/App\/Bootstrap\/sessions.php",
 		"oF": 0
 		},
-	"\/app\/bootstrap\/sessions.php": {
+	"\/App\/Config\/app.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/bootstrap\/sessions.php",
+		"oAP": "\/App\/Config\/app.php",
 		"oF": 0
 		},
-	"\/app\/config\/app.php": {
+	"\/App\/Config\/console.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/config\/app.php",
+		"oAP": "\/App\/Config\/console.php",
 		"oF": 0
 		},
-	"\/app\/config\/console.php": {
+	"\/App\/Config\/Database.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/config\/console.php",
+		"oAP": "\/App\/Config\/Database.php",
 		"oF": 0
 		},
-	"\/app\/config\/Database.php": {
+	"\/App\/Config\/keys.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/config\/Database.php",
+		"oAP": "\/App\/Config\/keys.php",
 		"oF": 0
 		},
-	"\/app\/config\/keys.php": {
+	"\/App\/Controllers\/AuthController.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/config\/keys.php",
+		"oAP": "\/App\/Controllers\/AuthController.php",
 		"oF": 0
 		},
-	"\/app\/Controllers\/AuthController.php": {
+	"\/App\/Database\/db": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/Controllers\/AuthController.php",
-		"oF": 0
-		},
-	"\/app\/Database\/db": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/app\/Database\/db",
+		"oAP": "\/App\/Database\/db",
 		"oF": 0
 		},
 	"\/App\/Database\/migrations\/1480166915_create_users_table.php": {
@@ -99,58 +93,58 @@
 		"oAP": "\/App\/Database\/migrations\/1480166915_create_users_table.php",
 		"oF": 0
 		},
-	"\/app\/http\/Kernel.php": {
+	"\/App\/HTTP\/Kernel.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/http\/Kernel.php",
+		"oAP": "\/App\/HTTP\/Kernel.php",
 		"oF": 0
 		},
-	"\/app\/http\/Middleware\/AuthMiddleware.php": {
+	"\/App\/HTTP\/Middleware\/AuthMiddleware.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/http\/Middleware\/AuthMiddleware.php",
+		"oAP": "\/App\/HTTP\/Middleware\/AuthMiddleware.php",
 		"oF": 0
 		},
-	"\/app\/http\/Middleware\/RedirectIfAuthenticatedMiddleware.php": {
+	"\/App\/HTTP\/Middleware\/RedirectIfAuthenticatedMiddleware.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/http\/Middleware\/RedirectIfAuthenticatedMiddleware.php",
+		"oAP": "\/App\/HTTP\/Middleware\/RedirectIfAuthenticatedMiddleware.php",
 		"oF": 0
 		},
-	"\/app\/http\/routes.php": {
+	"\/App\/HTTP\/Routes.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/http\/routes.php",
+		"oAP": "\/App\/HTTP\/Routes.php",
 		"oF": 0
 		},
-	"\/app\/Models\/User.php": {
+	"\/App\/Models\/User.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/Models\/User.php",
+		"oAP": "\/App\/Models\/User.php",
 		"oF": 0
 		},
-	"\/app\/Views\/auth\/dash.tea.php": {
+	"\/App\/Views\/auth\/dash.tea.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/Views\/auth\/dash.tea.php",
+		"oAP": "\/App\/Views\/auth\/dash.tea.php",
 		"oF": 0
 		},
-	"\/app\/Views\/auth\/home.tea.php": {
+	"\/App\/Views\/auth\/home.tea.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/Views\/auth\/home.tea.php",
+		"oAP": "\/App\/Views\/auth\/home.tea.php",
 		"oF": 0
 		},
-	"\/app\/Views\/auth\/login.tea.php": {
+	"\/App\/Views\/auth\/login.tea.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/Views\/auth\/login.tea.php",
+		"oAP": "\/App\/Views\/auth\/login.tea.php",
 		"oF": 0
 		},
-	"\/app\/Views\/auth\/register.tea.php": {
+	"\/App\/Views\/auth\/register.tea.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/app\/Views\/auth\/register.tea.php",
+		"oAP": "\/App\/Views\/auth\/register.tea.php",
 		"oF": 0
 		},
 	"\/CHANGELOG": {
@@ -321,388 +315,448 @@
 		"oO": 0,
 		"oS": 1
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Console\/MakeCommand.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Console\/MakeCommand.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Console\/MakeCommand.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Console\/MakeCommand.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Console\/MigrateCommand.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Console\/MigrateCommand.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Console\/MigrateCommand.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Console\/MigrateCommand.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Console\/SeedCommand.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Console\/SeedCommand.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Console\/SeedCommand.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Console\/SeedCommand.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Database\/Database.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Database\/Database.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Database\/Database.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Database\/Database.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Database\/Migrations.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Database\/Migrations.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Database\/Migrations.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Database\/Migrations.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Database\/schema.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Database\/Schema.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Database\/schema.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Database\/Schema.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Database\/table.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Database\/Table.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Database\/table.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Database\/Table.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Database\/template.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Database\/template.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Database\/template.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Database\/template.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Exceptions\/ClassIsNotInstantiableException.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Exceptions\/ClassIsNotInstantiableException.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Exceptions\/ClassIsNotInstantiableException.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Exceptions\/ClassIsNotInstantiableException.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Exceptions\/DependencyDoesNotExistException.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Exceptions\/DependencyDoesNotExistException.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Exceptions\/DependencyDoesNotExistException.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Exceptions\/DependencyDoesNotExistException.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Exceptions\/DependencyNameAlreadyInUseException.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Exceptions\/DependencyNameAlreadyInUseException.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Exceptions\/DependencyNameAlreadyInUseException.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Exceptions\/DependencyNameAlreadyInUseException.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Exceptions\/FacadeDoesNotImplimentMethodException.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Exceptions\/FacadeDoesNotImplimentMethodException.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Exceptions\/FacadeDoesNotImplimentMethodException.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Exceptions\/FacadeDoesNotImplimentMethodException.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Foundation\/Application.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Foundation\/Application.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Foundation\/Application.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Foundation\/Application.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Foundation\/autoload-old.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Foundation\/autoload-old.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Foundation\/autoload-old.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Foundation\/autoload-old.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Foundation\/autoload.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Foundation\/autoload.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Foundation\/autoload.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Foundation\/autoload.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Foundation\/Console\/CliKernel.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Foundation\/Console\/CliKernel.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Foundation\/Console\/CliKernel.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Foundation\/Console\/CliKernel.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Foundation\/Container.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Foundation\/Container.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Foundation\/Container.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Foundation\/Container.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Foundation\/HTTP\/HTTPKernel.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Foundation\/HTTP\/HTTPKernel.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Foundation\/HTTP\/HTTPKernel.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Foundation\/HTTP\/HTTPKernel.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/HTTP\/controller.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/HTTP\/Controller.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/HTTP\/controller.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/HTTP\/Controller.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/HTTP\/FileRequest.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/HTTP\/FileRequest.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/HTTP\/FileRequest.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/HTTP\/FileRequest.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/HTTP\/Request.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/HTTP\/Request.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/HTTP\/Request.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/HTTP\/Request.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/HTTP\/Router.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/HTTP\/Router.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/HTTP\/Router.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/HTTP\/Router.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/HTTP\/SessionRequest.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/HTTP\/SessionRequest.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/HTTP\/SessionRequest.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/HTTP\/SessionRequest.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/HTTP\/Validator.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/HTTP\/Validator.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/HTTP\/Validator.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/HTTP\/Validator.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Middleware\/web.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Middleware\/Web.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Middleware\/web.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Middleware\/Web.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/ORM\/ORM.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/ORM\/ORM.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/ORM\/ORM.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/ORM\/ORM.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/AuthenticationProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/AuthenticationProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/AuthenticationProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/AuthenticationProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/DatabaseProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/DatabaseProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/DatabaseProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/DatabaseProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/FileRequestProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/FileRequestProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/FileRequestProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/FileRequestProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/JWTProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/JWTProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/JWTProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/JWTProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/MigrationsProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/MigrationsProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/MigrationsProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/MigrationsProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/ORMProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/ORMProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/ORMProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/ORMProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/RequestProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/RequestProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/RequestProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/RequestProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/RouterProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/RouterProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/RouterProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/RouterProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/SchemaProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/SchemaProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/SchemaProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/SchemaProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/SessionRequestProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/SessionRequestProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/SessionRequestProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/SessionRequestProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/TableProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/TableProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/TableProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/TableProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/TeaProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/TeaProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/TeaProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/TeaProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/providers\/ValidatorProvider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Providers\/ValidatorProvider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/providers\/ValidatorProvider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Providers\/ValidatorProvider.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Render\/error.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Render\/error.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Render\/error.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Render\/error.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Render\/noRoutes.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Render\/noRoutes.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Render\/noRoutes.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Render\/noRoutes.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Render\/Tea.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Render\/Tea.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Render\/Tea.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Render\/Tea.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/security\/Authentication.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Security\/Authentication.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/security\/Authentication.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Security\/Authentication.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/security\/JWT.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Security\/JWT.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/security\/JWT.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Security\/JWT.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/CommandInterface.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/CommandInterface.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/CommandInterface.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/CommandInterface.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/AuthenticationFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/AuthenticationFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/AuthenticationFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/AuthenticationFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/DatabaseFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/DatabaseFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/DatabaseFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/DatabaseFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/Facade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/Facade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/Facade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/Facade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/JWTFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/JWTFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/JWTFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/JWTFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/ORMFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/ORMFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/ORMFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/ORMFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/RouterFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/RouterFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/RouterFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/RouterFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/SchemaFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/SchemaFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/SchemaFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/SchemaFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/SessionRequestFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/SessionRequestFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/SessionRequestFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/SessionRequestFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/TeaFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/TeaFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/TeaFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/TeaFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/Facades\/ValidatorFacade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/ValidatorFacade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/Facades\/ValidatorFacade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/Facades\/ValidatorFacade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/MiddlewareInterface.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/MiddlewareInterface.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/MiddlewareInterface.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/MiddlewareInterface.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/MigrationsInterface.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/MigrationsInterface.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/MigrationsInterface.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/MigrationsInterface.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/support\/ServiceProviderInterface.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Support\/ServiceProviderInterface.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/support\/ServiceProviderInterface.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Support\/ServiceProviderInterface.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Templates\/command.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Templates\/command.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Templates\/command.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Templates\/command.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Templates\/controller.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Templates\/controller.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Templates\/controller.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Templates\/controller.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Templates\/facade.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Templates\/facade.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Templates\/facade.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Templates\/facade.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Templates\/middleware.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Templates\/middleware.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Templates\/middleware.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Templates\/middleware.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Templates\/model.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Templates\/model.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Templates\/model.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Templates\/model.php",
 		"oF": 0
 		},
-	"\/vendor\/max\/framework\/src\/Core\/Templates\/provider.php": {
+	"\/vendor\/max\/Framework\/src\/Core\/Templates\/provider.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/vendor\/max\/framework\/src\/Core\/Templates\/provider.php",
+		"oAP": "\/vendor\/max\/Framework\/src\/Core\/Templates\/provider.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/Foundation\/ApplicationTest.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/Foundation\/ApplicationTest.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/Foundation\/Console\/CliKernelTest.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/Foundation\/Console\/CliKernelTest.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/Foundation\/ContainerTest.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/Foundation\/ContainerTest.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/Foundation\/HTTP\/HTTPKernelTest.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/Foundation\/HTTP\/HTTPKernelTest.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/Foundation\/HTTP\/RequestMock.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/Foundation\/HTTP\/RequestMock.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/Foundation\/HTTP\/RequestTest.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/Foundation\/HTTP\/RequestTest.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/HTTP\/ControllerTest.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/HTTP\/ControllerTest.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/MockClasses\/AppMock.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/MockClasses\/AppMock.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/MockClasses\/TeaMock.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/MockClasses\/TeaMock.php",
+		"oF": 0
+		},
+	"\/vendor\/max\/Framework\/src\/Tests\/MockClasses\/ValidatorMock.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/vendor\/max\/Framework\/src\/Tests\/MockClasses\/ValidatorMock.php",
 		"oF": 0
 		}
 	},
@@ -718,7 +772,7 @@
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
-	"alwaysUseExternalServer": 0,
+	"alwaysUseExternalServer": 1,
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
 	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
@@ -2040,7 +2094,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http:\/\/localhost:8888",
+	"externalServerAddress": "http:\/\/fw.local\/",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",

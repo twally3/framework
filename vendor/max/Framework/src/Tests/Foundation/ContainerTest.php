@@ -36,7 +36,7 @@ Class ContainerTest extends PHPUnit_Framework_Testcase {
 		$this->assertTrue($this->container->singletonResolved('foo'));
 	}
 
-	public function testGetSingletonInstanceReturnsKey() {
+	public function testGetSingletonInstanceReturnsObject() {
 		$this->container->singleton('foo', 'Bar');
 		$this->container->resolve('foo');
 		$object = $this->container->getSingletonInstance('foo');
@@ -75,6 +75,16 @@ Class ContainerTest extends PHPUnit_Framework_Testcase {
 		$this->expectException(Framework\Core\Exceptions\DependencyNameAlreadyInUseException::class);
 		$this->container->bind('foo', 'Foo');
 		$this->container->bind('foo', 'Bar');
+	}
+
+	public function testGetKeyFromValReturnsKey() {
+		$this->container->bind('bar', 'Bar');
+		$this->assertEquals('bar', $this->container->getKeyFromVal('Bar'));
+	}
+
+	public function testGetKeyFromValThrowsException() {
+		$this->expectException(Framework\Core\Exceptions\DependencyDoesNotExistException::class);
+		$this->container->getKeyFromVal('foo');
 	}
 
 }

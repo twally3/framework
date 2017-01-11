@@ -2,7 +2,7 @@
 
 require_once '../../../Core/Foundation/HTTP/HTTPKernel.php';
 require_once './RequestMock.php';
-require_once './AppMock.php';
+require_once '../../MockClasses/AppMock.php';
 
 class HTTPKernelTest extends PHPUnit_framework_Testcase {
 
