@@ -171,38 +171,6 @@
 		"oAP": "\/public\/.htaccess",
 		"oF": 0
 		},
-	"\/public\/img\/image1.png": {
-		"ft": 32768,
-		"iS": 15209,
-		"oA": 0,
-		"oAP": "\/public\/img\/image1.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/img\/image2.png": {
-		"ft": 32768,
-		"iS": 26212,
-		"oA": 0,
-		"oAP": "\/public\/img\/image2.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/img\/image3.png": {
-		"ft": 32768,
-		"iS": 18348,
-		"oA": 0,
-		"oAP": "\/public\/img\/image3.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/public\/img\/new-york.jpg": {
-		"ft": 16384,
-		"iS": 49071,
-		"oA": 0,
-		"oAP": "\/public\/img\/new-york.jpg",
-		"oF": 0,
-		"opt": 0
-		},
 	"\/public\/index.php": {
 		"ft": 8192,
 		"oA": 2,
