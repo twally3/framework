@@ -24,9 +24,11 @@ Class CliKernel {
 	 * Binds the dependencies
 	 * @param Application $app The application container instance
 	 */
-	public function __construct(Application $app) {
+	public function __construct(Application $app, $config = true) {
 		$this->app = $app;
-		$this->commands = require_once $this->app->basepath . '/App/Config/console.php';
+		if ($config) {
+			$this->commands = require_once $this->app->basepath . '/App/Config/console.php';
+		}
 
 	}
 
@@ -37,7 +39,7 @@ Class CliKernel {
 	 * @return resource     The result of the method run
 	 */
 	public function handle($args) {
-		$this->cleanArgs($args);
+		$this->args = $this->cleanArgs($args);
 
 		if (array_key_exists($this->command, $this->commands['commands'])) {
 			$reflection = new ReflectionClass($this->commands['commands'][$this->command]);
@@ -66,7 +68,7 @@ Class CliKernel {
 		unset($args[0]);
 		unset($args[1]);
 
-		$this->args = array_values($args);
+		return array_values($args);
 	}
 
 }

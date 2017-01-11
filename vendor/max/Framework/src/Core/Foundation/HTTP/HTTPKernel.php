@@ -104,16 +104,16 @@ Class HTTPKernel {
 
 		if (is_array($method)) {
 			$reflector = new ReflectionMethod($method[0], $method[1]);
-	    } else {
-	      $reflector = new ReflectionFunction($method);
-	    }
+    } else {
+      $reflector = new ReflectionFunction($method);
+    }
 
-	    $dependencies = $reflector->getParameters();
-	    $class = isset($dependencies[0]) ? $dependencies[0]->getClass() : null;
-	    
-	    if (isset($class->name) && ($class->name == 'Framework\Core\HTTP\Request')) {
-	      array_unshift($this->args, $this->request);
-	    }
+    $dependencies = $reflector->getParameters();
+    $class = isset($dependencies[0]) ? $dependencies[0]->getClass() : null;
+    
+    if (isset($class->name) && ($class->name == 'Framework\Core\HTTP\Request')) {
+      array_unshift($this->args, $this->request);
+    }
 	}
 
 
