@@ -184,7 +184,7 @@ class Database {
     $fields = substr($fields, 0, -1);
     $placeholders = substr($placeholders, 0, -1);
 
-    $values = $this->htmlchars($values);
+    // $values = $this->htmlchars($values);
 
     return array($fields, $placeholders, $values);
   }

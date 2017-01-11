@@ -86,7 +86,7 @@ Class HTTPKernel {
 			$this->runMiddleware();
 		}
 
-		$this->requiresRequest($this->method, $this->args);
+		$this->requiresDependencies($this->method, $this->args);
 		call_user_func_array($this->method, $this->args);
 
 		return 'response';
@@ -99,7 +99,7 @@ Class HTTPKernel {
 	 * @param  array  $args   The args to pass to the method
 	 * @return void
 	 */
-	protected function requiresRequest($method, $args) {
+	protected function requiresDependencies($method, $args) {
 		$reflector;
 
 		if (is_array($method)) {

@@ -18,7 +18,3 @@ Route::group(['middleware' => 'web'], function() {
 });
 
 // ---------------------------- END AUTH ROUTES ---------------------------- //
-// 
-Route::get('/test/{thing}/{2}/{3}', function(Framework\Core\HTTP\Request $r, Framework\Core\Database\Table $t, $thing, Framework\Core\HTTP\Validator $v, $two, $three) {
-	echo 'YES';
-});
