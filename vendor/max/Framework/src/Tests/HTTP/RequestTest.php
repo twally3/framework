@@ -3,13 +3,24 @@
 require_once '../../Core/Support/ServiceProviderInterface.php';
 require_once '../../Core/Foundation/Container.php';
 require_once '../../Core/Foundation/Application.php';
+require_once '../../Core/HTTP/FileRequest.php';
 require_once '../../Core/HTTP/Request.php';
 
 Class RequestTest extends PHPUnit_framework_Testcase {
 
 	protected $requests = [
 		'test' => '123',
-		'test2' => '456'
+		'test2' => '456',
+	];
+
+	protected $file = [
+		'file' => [
+			'name' => 'grand-central.jpg',
+			'type' => 'image/jpeg',
+			'tmp_name' => '/Applications/MAMP/tmp/php/phpO0XY60',
+			'error' => 0,
+			'size' => 1590218
+		],
 	];
 
 	public function setUp() {
@@ -18,6 +29,8 @@ Class RequestTest extends PHPUnit_framework_Testcase {
 		}
 
 		$app = $this->createMock(Framework\Core\Foundation\Application::class);
+		$app->method('resolve')->willReturn(new Framework\Core\HTTP\FileRequest($this->file['file'], true));
+
 		$this->app = new Framework\Core\HTTP\Request(
 			$app
 		);
@@ -204,6 +217,27 @@ Class RequestTest extends PHPUnit_framework_Testcase {
 		$this->app->flash();
 		$this->app->emptyFlash();
 		$this->assertEquals($_SESSION['flash']['request'], []);
+	}
+
+	public function testHasFileReturnsTrue() {
+		$_FILES = $this->file;
+
+		$this->assertTrue($this->app->hasFile('file'));
+	}
+
+	public function testHasFileReturnsFalse() {
+		$_FILES = $this->file;
+
+		$this->assertFalse($this->app->hasFile('fake'));
+	}
+
+	public function testFileReturnsFileRequest() {
+		$_FILES = $this->file;
+		$this->assertInstanceOf('Framework\Core\HTTP\FileRequest', $this->app->file('file'));
+	}
+
+	public function testFileReturnsNull() {
+		$this->assertNull($this->app->file('fake'));
 	}
 
 }

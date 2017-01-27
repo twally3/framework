@@ -155,7 +155,7 @@ class Router {
    * @param  string $rtype  POST, GET, DELETE, PUT
    * @return array          The URI array element
    */
-	public function buildURI($uri, $method, $rtype) {
+	protected function buildURI($uri, $method, $rtype) {
     $uri = is_null($this->_prefix) ? $uri : $this->_prefix . $uri;
 
     return ['original' => $uri,
@@ -171,7 +171,7 @@ class Router {
    * @param  string $uri The URI
    * @return string      The REGEX query
    */
-	public function reg_replace($uri) {
+	protected function reg_replace($uri) {
     return "#^" . preg_replace("#\/\??\{[A-Za-z0-9\_\-]+\}#", "(?:\/([A-Za-z0-9\-\_]+))", "/" . trim($uri, "/")) . "$#";
   }
 

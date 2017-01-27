@@ -9,7 +9,7 @@ Class FileRequest {
 	 * Setup the file data
 	 * @param array $file file POST data
 	 */
-	function __construct($file=null) {
+	function __construct($file=null, $testing=false) {
 		$this->file = $file;
 
 		$this->originalName = $file['name'];
@@ -24,7 +24,7 @@ Class FileRequest {
 		$this->fileExt = explode('.', $this->fileName);
 		$this->fileExt = strtolower(end($this->fileExt));
 
-		if (in_array($this->fileExt, ['jpeg', 'jpg'])) {
+		if (in_array($this->fileExt, ['jpeg', 'jpg']) && !$testing) {
 			$this->rotation = $this->rotation($this->fileLocation);
 		}
 

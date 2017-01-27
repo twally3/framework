@@ -265,6 +265,7 @@ Class Request {
 	 */
 	public function file($name) {
 		$results = [];
+		if ($_FILES[$name] == null) return null;
 		if (is_array($_FILES[$name]['name'])) {
 			$files = $this->diverse_array($_FILES[$name]);
 			foreach ($files as $file) {
@@ -286,7 +287,8 @@ Class Request {
 	 * @return boolean       Does the file exist?
 	 */
 	public function hasFile($name) {
-		return ($_FILES[$name]['name'][0] != '') ? true : false;
+		return ($_FILES[$name] !== null) ? true : false;
+		// return ($_FILES[$name]['name'][0] != '') ? true : false;
 	}
 
 	/**

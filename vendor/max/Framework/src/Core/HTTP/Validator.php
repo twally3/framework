@@ -3,6 +3,7 @@
 namespace Framework\Core\HTTP;
 
 use Framework\Core\HTTP\Request;
+use Framework\Core\Database\Database;
 
 Class Validator {
 
@@ -35,6 +36,15 @@ Class Validator {
 		'alphanumeric' => 'isAlph'
 
 	];
+
+
+	/**
+	 * Loads and stores dependencies
+	 * @param Database $db Database connection object
+	 */
+	public function __construct(Database $db) {
+		$this->db = $db;
+	}
 
 	/**
 	 * Check the request against the rules
@@ -284,9 +294,9 @@ Class Validator {
 		$param = $this->param;
 		$param = explode(',', $param);
 		if (count($param) != 2) throw new \Exception('Incorrect Syntax for unique');
-		$query = \Database::select($param[0], null, null, [$param[1] . '=' => $request]);
+		$query = $this->db->select($param[0], null, null, [$param[1] . '=' => $request]);
 		$data = $query->fetchAll(\PDO::FETCH_OBJ);
-
+		
 		if (!empty($data)) {
 			$this->errors[$name][] = "$request is taken";
 			return false;

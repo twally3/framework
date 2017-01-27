@@ -2,6 +2,7 @@
 
 require_once '../../Core/HTTP/Request.php';
 require_once '../../Core/HTTP/Validator.php';
+require_once '../../Core/Database/Database.php';
 
 Class ValidatorTest extends PHPUnit_framework_Testcase {
 
@@ -18,8 +19,10 @@ Class ValidatorTest extends PHPUnit_framework_Testcase {
 		$this->request->pwrd1 = 'thing';
 		$this->request->pwrd2 = 'thing';
 
+		$db = $this->createMock(Framework\Core\Database\Database::class);
+		$db->method('select')->willReturn(new Data);
 
-		$this->app = new Framework\Core\HTTP\Validator;
+		$this->app = new Framework\Core\HTTP\Validator($db);
 	}
 
 	public function testCheckReturnsTrue() {
@@ -248,7 +251,7 @@ Class ValidatorTest extends PHPUnit_framework_Testcase {
 		$this->assertFalse($this->app->check($this->request, $tests));
 	}
 
-	// -----------------Is Accepted----------------- //
+	// -----------------Is Required----------------- //
 	public function testIsRequiredReturnsTrueWhenSet() {
 		$tests = [
 			'int' => 'required'
@@ -291,6 +294,28 @@ Class ValidatorTest extends PHPUnit_framework_Testcase {
 	}
 
 	// -----------------Email----------------- //
+	public function testUniqueReturnsFalseWhenMatch() {
+		$tests = [
+			'pwrd2' => 'unique:users,email'
+		];
+
+		$this->assertFalse($this->app->check($this->request, $tests));
+	}
+
+	public function testUniqueReturnsTrueWhenNoMatch() {
+		$tests = [
+			'pwrd2' => 'unique:users,email'
+		];
+
+		$db = $this->createMock(Framework\Core\Database\Database::class);
+		$db->method('select')->willReturn(new NoData);
+
+		$app = new Framework\Core\HTTP\Validator($db);
+
+		$this->assertTrue($app->check($this->request, $tests));
+	}
+
+	// -----------------Email----------------- //
 	public function testEmailReturnsTrue() {
 		$tests = [
 			'email' => 'email'
@@ -325,3 +350,17 @@ Class ValidatorTest extends PHPUnit_framework_Testcase {
 	}
 }
 
+
+Class Data {
+	public function fetchAll() {
+		return [
+			'somematch'
+		];
+	}
+}
+
+Class NoData {
+	public function fetchAll() {
+		return [];
+	}
+}
