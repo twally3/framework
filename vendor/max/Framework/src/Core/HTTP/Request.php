@@ -76,9 +76,9 @@ Class Request {
 		$string = preg_replace('#\*#', '.+', $string);
 
 		if (preg_match($string, $this->path())) {
-			return 'true';
+			return true;
 		} else {
-			return 'false';
+			return false;
 		}
 	}
 
@@ -190,6 +190,7 @@ Class Request {
 		}
 
 		$_SESSION['flash']['request'] = $results;
+		return true;
 	}
 
 	/**
@@ -231,7 +232,9 @@ Class Request {
 				return '';
 			}
 		} else {
-			return $_SESSION['flash']['request'];
+			$session = $_SESSION['flash']['request'];
+			$_SESSION['flash']['request'] = [];
+			return $session;
 		}
 		// return (!is_null($name) && isset($_SESSION['flash']['request'])) ? $_SESSION['flash']['request'][$name] : $_SESSION['flash']['request'];
 	}
@@ -241,7 +244,7 @@ Class Request {
 	 * @return void
 	 */
 	public function emptyFlash() {
-		unset($_SESSION['flash']['request']);
+		$_SESSION['flash']['request'] = [];
 	}
 
 	/**
@@ -291,7 +294,7 @@ Class Request {
 	 * @param  array $vector The specific multiple files in the FILES
 	 * @return array         Reordered array for multiple files
 	 */
-	public function diverse_array($vector) { 
+	protected function diverse_array($vector) { 
 		$result = array(); 
 			foreach($vector as $key1 => $value1) 
 				foreach($value1 as $key2 => $value2) 

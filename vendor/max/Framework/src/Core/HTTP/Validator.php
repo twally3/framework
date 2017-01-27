@@ -43,11 +43,9 @@ Class Validator {
 	 * @param  Boolean|null $fast    Quit on the first error
 	 * @return boolean               Did the rules match
 	 */
-	public function check(Request $request, array $array, Boolean $fast = null) {
+	public function check(Request $request, array $array, $fast = true) {
 		$this->request = $request;
 		$this->errors = [];
-
-		$fast = $fast ?: True;
 
 		foreach ($array as $key => $value) {
 			$lists = explode('|', $value);
@@ -63,7 +61,7 @@ Class Validator {
 			}
 		}
 
-		return true;
+		return empty($this->errors) ? true : false;
 	}
 
 

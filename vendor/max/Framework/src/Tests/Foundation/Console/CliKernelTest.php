@@ -1,7 +1,9 @@
 <?php
 
 require_once '../../../Core/Foundation/Console/CliKernel.php';
-require_once '../../MockClasses/AppMock.php';
+require_once '../../../Core/Support/ServiceProviderInterface.php';
+require_once '../../../Core/Foundation/Container.php';
+require_once '../../../Core/Foundation/Application.php';
 
 Class CliKernelTest extends PHPUnit_framework_Testcase {
 
@@ -15,7 +17,7 @@ Class CliKernelTest extends PHPUnit_framework_Testcase {
 
 	public function setUp() {
 		$this->app = new Framework\Core\Foundation\Console\CliKernel(
-			new Framework\Core\Foundation\Application,
+			$this->createMock(Framework\Core\Foundation\Application::class),
 			false
 		);
 	}
