@@ -24,8 +24,9 @@ class Tea {
    * Bind dependencies
    * @param Application $app The application container
    */
-  public function __construct(Application $app) {
+  public function __construct(Application $app, $path='/App/Views/') {
     $this->app = $app;
+    $this->basepath = $this->app->basepath . $path;
   }
 
 
@@ -36,7 +37,7 @@ class Tea {
    * @return void
    */
   public function make($view, $data = []) {
-    $string = file_get_contents($this->app->basepath . '/App/Views/' . $view . $this->extension);
+    $string = file_get_contents($this->basepath . $view . $this->extension);
 
     foreach ($data as $x => $y) {
       if (isset($$x)) {
@@ -207,7 +208,7 @@ class Tea {
    */
   protected function include_file($matches) {
     $file = implode('/', explode('.', $matches[1]));
-    $string = file_get_contents($this->app->basepath . '/App/Views/' . $file . $this->extension);
+    $string = file_get_contents($this->basepath . $file . $this->extension);
     return $string;
   }
 
@@ -269,7 +270,7 @@ class Tea {
   protected function extend($extends, $string) {
     if (!empty($extends[0])) {
       $file = implode('/', explode('.', $extends[1]));
-      $new_string = file_get_contents($this->app->basepath . '/App/Views/' . $file . $this->extension);
+      $new_string = file_get_contents($this->basepath . $file . $this->extension);
       return $new_string;
     }
     return $string;

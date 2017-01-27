@@ -30,8 +30,80 @@ class FileRequestTest extends PHPUnit_framework_Testcase {
 		$this->assertTrue($this->app->isValid());
 	}
 
-	public function testMoveUploadedFileReturnsFalse() {
-		
+	public function testStoreReturnsFalse() {
+		$this->assertFalse($this->app->store('', 'name.png'));
+	}
+
+	public function testFileSizeEqualToReturnsTrue() {
+		$this->assertTrue($this->app->fileSizeEqualTo(1590218));
+	}
+
+	public function testFileSizeEqualToReturnsFalse() {
+		$this->assertFalse($this->app->fileSizeEqualTo(1590219));
+	}
+
+	public function testFileSizeGreaterThanReturnsTrue() {
+		$this->assertTrue($this->app->fileSizeGreaterThan(5));
+	}
+
+	public function testFileSizeGreaterThanReturnsFalse() {
+		$this->assertFalse($this->app->fileSizeGreaterThan(2000000));
+	}
+
+	public function testFileSizeGreaterThanReturnsFalseWhenEqualsToIsFalse() {
+		$this->assertFalse($this->app->fileSizeGreaterThan(1590218));
+	}
+
+	public function testFileSizeGreaterThanWithEqualsToReturnsTrue() {
+		$this->assertTrue($this->app->fileSizeGreaterThan(1590218, true));
+	}
+
+	public function testFileSizeLessThanReturnsTrue() {
+		$this->assertTrue($this->app->fileSizeLessThan(2000000));
+	}
+
+	public function testFileSizeLessThanReturnsFalse() {
+		$this->assertFalse($this->app->fileSizeLessThan(5));
+	}
+
+	public function testFileSizeLessThanReturnsFalseWhenEqualsToIsFalse() {
+		$this->assertFalse($this->app->fileSizeLessThan(1590218));
+	}
+
+	public function testFileSizeLessThanWithEqualsToReturnsTrue() {
+		$this->assertTrue($this->app->fileSizeLessThan(1590218, true));
+	}
+
+	public function testHasExtentionReturnsTrueWithOneParam() {
+		$this->assertTrue($this->app->hasExtention('jpg'));
+	}
+
+	public function testHasExtentionReturnsTrueWithMultipleParams() {
+		$this->assertTrue($this->app->hasExtention('jpg', 'png'));
+	}
+
+	public function testHasExtentionReturnsFalseWithOneParam() {
+		$this->assertFalse($this->app->hasExtention('png'));
+	}
+
+	public function testHasExtentionReturnsFalseWithMultipleParams() {
+		$this->assertFalse($this->app->hasExtention('gif', 'png'));
+	}
+
+	public function testHasExtentionReturnsTrueWithOneParamAsArrays() {
+		$this->assertTrue($this->app->hasExtention(['jpg']));
+	}
+
+	public function testHasExtentionReturnsTrueWithMultipleParamsAsArrays() {
+		$this->assertTrue($this->app->hasExtention(['jpg', 'png']));
+	}
+
+	public function testHasExtentionReturnsFalseWithOneParamAsArrays() {
+		$this->assertFalse($this->app->hasExtention(['png']));
+	}
+
+	public function testHasExtentionReturnsFalseWithMultipleParamsAsArrays() {
+		$this->assertFalse($this->app->hasExtention(['gif', 'png']));
 	}
 
 }
