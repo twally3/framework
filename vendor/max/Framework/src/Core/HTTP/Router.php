@@ -241,7 +241,7 @@ class Router {
    * Finds a match in the stored URI based on the CURRENT URI
    * @return mixed null or the matched array element
    */
-  public function findMatch() {
+  protected function findMatch() {
     $uriGetParam = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
     $rtype = strtolower($_SERVER['REQUEST_METHOD']);
 
