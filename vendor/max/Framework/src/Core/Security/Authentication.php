@@ -2,9 +2,8 @@
 
 namespace Framework\Core\Security;
 
-use \Database;
+use Framework\Core\Database\Database as Database;
 use \PDO;
-use \Route;
 
 class Authentication {
 
@@ -13,6 +12,16 @@ class Authentication {
 	 * @var string
 	 */
 	private $algorithm = PASSWORD_DEFAULT;
+
+
+	/**
+	 * Load the database dependency
+	 * @param Framework\Core\Database\Database $db The database class
+	 */
+	public function __construct(Database $db, JWT $jwt) {
+		$this->db = $db;
+		$this->jwt = $jwt;
+	}
 
 
 	/**
@@ -34,7 +43,7 @@ class Authentication {
 		$remember = (isset($array['remember'])) ? $array['remember'] : false;
 
 		if ($this->user_exists('email', $email)) {
-			$query = Database::select('users', null, null, ['email = ' => $email]);
+			$query = $this->db->select('users', null, null, ['email = ' => $email]);
 			$data = $query->fetchAll(PDO::FETCH_OBJ)[0];
 			$hash = $data->password;
 
@@ -114,7 +123,7 @@ class Authentication {
 			return false;
 		}
 
-		$query = Database::select('users', null, null, ['id =' => $user]);
+		$query = $this->db->select('users', null, null, ['id =' => $user]);
 		$data = $query->fetchAll(PDO::FETCH_OBJ)[0];
 
 		if ($token == md5($data->created_at . $data->username)) {
@@ -148,7 +157,7 @@ class Authentication {
 	public function token() {
 		$token = [];
 		$token['id'] = $this->id();
-		setcookie('jwt_token', \JWT::encode($token, SITE_KEY), 0, '', '', '', false);
+		setcookie('jwt_token', $this->jwt->encode($token, SITE_KEY), 0, '', '', '', false);
 	}
 
 	// public function register($request) {
@@ -172,7 +181,7 @@ class Authentication {
 			$args = null;
 		}
 
-		$query = Database::select('users', $args, null, ['id =' => $user]);
+		$query = $this->db->select('users', $args, null, ['id =' => $user]);
 		$data = $query->fetchAll(PDO::FETCH_OBJ);
 
 		return !empty($data) ? $data[0] : null;
@@ -187,7 +196,7 @@ class Authentication {
 	 * @return boolean       Success
 	 */
 	public function user_exists($field, $value) {
-		$query = Database::select('users', null, null, [$field . '=' => $value]);
+		$query = $this->db->select('users', null, null, [$field . '=' => $value]);
 		$data = $query->fetchAll(PDO::FETCH_OBJ);
 		return !empty($data) ? true : false;
 	}
