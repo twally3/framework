@@ -82,7 +82,7 @@ class AuthController extends Controller {
   protected function addToUser($request) {
   	$user = new User;
 
-		$user->name = $request->fname . ' ' . $request->lname;
+		$user->name = $request->name;
 		$user->email = $request->email;
 		$user->password = Auth::hash($request->password);
 
